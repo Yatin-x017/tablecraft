@@ -401,6 +401,39 @@ function FooterHours({ hours }: { hours: BusinessHours[] }) {
   );
 }
 
+/**
+ * "Kitchen is LIVE" indicator — derived from today's business hours rather
+ * than hardcoded: green pulse while open, dim "back soon" once closed.
+ */
+function KitchenStatus({ hours }: { hours: BusinessHours[] }) {
+  const now = new Date();
+  const today = hours.find((h) => h.day_of_week === now.getDay());
+
+  let isOpen = false;
+  if (today && !today.is_closed) {
+    const minutesNow = now.getHours() * 60 + now.getMinutes();
+    const [oh, om] = today.open_time.split(":").map(Number);
+    const [ch, cm] = today.close_time.split(":").map(Number);
+    isOpen = minutesNow >= oh * 60 + om && minutesNow < ch * 60 + cm;
+  }
+
+  return (
+    <p className="mt-4 flex items-center gap-2 font-body-sm text-background-cream/70">
+      <span
+        aria-hidden="true"
+        className={cn("h-2 w-2 rounded-full", isOpen ? "animate-pulse bg-success-mint" : "bg-background-cream/40")}
+      />
+      {isOpen ? (
+        "Kitchen is LIVE"
+      ) : (
+        <span>
+          Kitchen opens {today && !today.is_closed ? formatTime(today.open_time) : "tomorrow"}
+        </span>
+      )}
+    </p>
+  );
+}
+
 const fallbackSocials = [
   { label: "Instagram", icon: "photo_camera", href: "https://instagram.com/crumbandconfetti" },
   { label: "Facebook", icon: "thumb_up", href: "https://facebook.com/crumbandconfetti" },
@@ -447,7 +480,7 @@ export function Footer() {
           </div>
           <Link
             to="/book"
-            className="group inline-flex items-center gap-2 rounded-[20px] border-2 border-on-surface bg-on-surface px-8 py-4 font-label-bold text-label-bold uppercase text-surface-white shadow-[6px_6px_0_#231a11] transition-all hover:scale-[1.02] hover:bg-primary active:translate-y-0.5 active:shadow-[3px_3px_0_#231a11]"
+            className="group inline-flex items-center gap-2 rounded-[20px] border-2 border-on-surface bg-on-surface px-8 py-4 font-label-bold text-label-bold uppercase text-surface-white shadow-[6px_6px_0_#ff6586] transition-all hover:scale-[1.02] hover:bg-primary active:translate-y-0.5 active:shadow-[3px_3px_0_#ff6586]"
           >
             Book a Table
             <Icon
@@ -569,11 +602,17 @@ export function Footer() {
               Hours
             </h3>
             <FooterHours hours={hours} />
-            <p className="mt-4 flex items-center gap-2 font-body-sm text-background-cream/70">
-              <span aria-hidden="true" className="h-2 w-2 animate-pulse rounded-full bg-success-mint" />
-              Kitchen is LIVE
-            </p>
+            <KitchenStatus hours={hours} />
           </div>
+        </div>
+
+        {/* Confetti divider — brand whimsy between the grid and legal bar */}
+        <div aria-hidden="true" className="flex items-center justify-center gap-1.5 py-5">
+          <span className="h-2 w-2 rotate-45 rounded-[2px] bg-primary" />
+          <span className="h-2 w-2 rounded-full bg-secondary-container" />
+          <span className="h-2.5 w-2.5 -rotate-12 rounded-[3px] bg-tertiary-container" />
+          <span className="h-2 w-2 rotate-12 rounded-[2px] bg-primary-container" />
+          <span className="h-2 w-2 rounded-full bg-background-cream/30" />
         </div>
 
         {/* Legal bar */}
@@ -596,7 +635,7 @@ export function Footer() {
               </Link>
             </nav>
             <p className="flex items-center gap-1.5">
-              Baked with <Icon name="favorite" size="sm" className="text-tertiary-container" /> in Brooklyn
+              Baked with <Icon name="favorite" size="sm" className="text-tertiary-container" /> in {settings?.city ?? "Brooklyn"}
             </p>
           </div>
         </div>
