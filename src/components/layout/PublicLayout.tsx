@@ -371,27 +371,27 @@ function TopNav() {
 
 function FooterHours({ hours }: { hours: BusinessHours[] }) {
   if (hours.length === 0) {
-    return <p className="font-body-sm text-on-surface-variant">Hours coming soon.</p>;
+    return <p className="font-body-sm text-background-cream/60">Hours coming soon.</p>;
   }
   const today = new Date().getDay();
   return (
-    <ul className="space-y-1.5">
+    <ul className="space-y-2">
       {hours.map((h) => {
         const isToday = h.day_of_week === today;
         return (
           <li
             key={h.day_of_week}
             className={cn(
-              "flex items-center justify-between gap-4 font-body-sm",
-              isToday ? "font-bold text-on-surface" : "text-on-surface-variant"
+              "grid grid-cols-[1fr_auto] items-baseline gap-x-4 font-body-sm",
+              isToday ? "font-bold text-background-cream" : "text-background-cream/70"
             )}
           >
-            <span>
+            <span className="flex items-center gap-2">
+              {isToday && <span aria-hidden="true" className="h-1.5 w-1.5 shrink-0 rounded-full bg-success-mint" />}
               {DAY_NAMES[h.day_of_week]}
               {isToday && <span className="sr-only"> (today)</span>}
             </span>
-            <span className={cn(isToday && "flex items-center gap-1.5")}>
-              {isToday && <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-success-mint" />}
+            <span className="whitespace-nowrap text-right tabular-nums">
               {h.is_closed ? "Closed" : `${formatTime(h.open_time)} – ${formatTime(h.close_time)}`}
             </span>
           </li>
@@ -401,35 +401,11 @@ function FooterHours({ hours }: { hours: BusinessHours[] }) {
   );
 }
 
-function FooterSocials({ settings }: { settings: SiteSettings | null }) {
-  const socials = settings?.social_links ?? {};
-  const items = [
-    { key: "instagram", label: "Instagram", icon: "photo_camera", href: socials.instagram },
-    { key: "facebook", label: "Facebook", icon: "thumb_up", href: socials.facebook },
-    { key: "tiktok", label: "TikTok", icon: "music_note", href: socials.tiktok },
-  ].filter((s) => s.href);
-
-  return (
-    <div className="flex gap-2">
-      {items.length > 0 ? (
-        items.map((s) => (
-          <a
-            key={s.key}
-            href={s.href}
-            target="_blank"
-            rel="noreferrer"
-            aria-label={`${s.label} (opens in a new tab)`}
-            className="flex h-10 w-10 items-center justify-center rounded-full border-2 border-on-surface bg-surface-white shadow-[2px_2px_0_#231a11] transition-all hover:-translate-y-0.5 hover:bg-secondary-container"
-          >
-            <Icon name={s.icon} size="sm" />
-          </a>
-        ))
-      ) : (
-        <p className="font-body-sm text-on-surface-variant">@crumbandconfetti</p>
-      )}
-    </div>
-  );
-}
+const fallbackSocials = [
+  { label: "Instagram", icon: "photo_camera", href: "https://instagram.com/crumbandconfetti" },
+  { label: "Facebook", icon: "thumb_up", href: "https://facebook.com/crumbandconfetti" },
+  { label: "TikTok", icon: "music_note", href: "https://tiktok.com/@crumbandconfetti" },
+];
 
 export function Footer() {
   const [settings, setSettings] = useState<SiteSettings | null>(null);
@@ -448,8 +424,16 @@ export function Footer() {
     };
   }, []);
 
+  // CMS-configured socials first, falling back to the branded defaults.
+  const cmsSocials = settings?.social_links ?? {};
+  const socials = [
+    { label: "Instagram", icon: "photo_camera", href: cmsSocials.instagram },
+    { label: "Facebook", icon: "thumb_up", href: cmsSocials.facebook },
+    { label: "TikTok", icon: "music_note", href: cmsSocials.tiktok },
+  ].map((s) => ({ ...s, href: s.href || fallbackSocials.find((f) => f.label === s.label)?.href }));
+
   return (
-    <footer className="mt-16 border-t-2 border-on-surface pb-20 md:pb-0">
+    <footer className="mt-16 border-t-2 border-on-surface pb-20 md:ml-[240px] md:pb-0">
       {/* Book CTA band — warm gradient */}
       <div className="sunset-gradient px-margin-mobile py-12 md:px-margin-desktop">
         <div className="mx-auto flex max-w-container-max flex-col items-center justify-between gap-6 text-center md:flex-row md:text-left">
@@ -488,11 +472,11 @@ export function Footer() {
         </div>
       </div>
 
-      {/* Main footer grid — 3 clean columns */}
+      {/* Main footer grid — 4 balanced columns */}
       <div className="footer-wash text-background-cream">
-        <div className="mx-auto grid max-w-container-max grid-cols-1 gap-12 px-margin-mobile py-14 sm:grid-cols-2 lg:grid-cols-12 md:px-margin-desktop">
+        <div className="mx-auto grid max-w-container-max grid-cols-1 gap-10 px-margin-mobile py-14 sm:grid-cols-2 md:px-margin-desktop lg:grid-cols-12 lg:gap-8">
           {/* Brand + socials */}
-          <div className="lg:col-span-5">
+          <div className="sm:col-span-2 lg:col-span-4">
             <div className="mb-4 flex items-center gap-2">
               <Icon name="cake" className="text-primary-container" size="md" />
               <span className="font-headline-md text-headline-md font-bold leading-none tracking-tight">
@@ -502,15 +486,28 @@ export function Footer() {
             <p className="mb-6 max-w-xs font-body-sm text-background-cream/70">
               {settings?.description ?? "Artisanal pastries, craft coffee, and a daily dose of celebration."}
             </p>
-            <FooterSocials settings={settings} />
+            <div className="flex gap-2">
+              {socials.map((s) => (
+                <a
+                  key={s.label}
+                  href={s.href}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label={`${s.label} (opens in a new tab)`}
+                  className="flex h-10 w-10 items-center justify-center rounded-full border-2 border-background-cream/25 bg-surface-white/5 transition-all hover:-translate-y-0.5 hover:border-on-surface hover:bg-secondary-container hover:text-on-surface"
+                >
+                  <Icon name={s.icon} size="sm" />
+                </a>
+              ))}
+            </div>
           </div>
 
-          {/* Explore — nav only (legal links live in the bottom bar) */}
-          <nav className="lg:col-span-3" aria-label="Footer navigation">
+          {/* Explore — single tidy column (legal links live in the bottom bar) */}
+          <nav className="lg:col-span-2" aria-label="Footer navigation">
             <h3 className="mb-5 font-label-bold text-label-bold uppercase tracking-widest text-secondary-container">
               Explore
             </h3>
-            <ul className="grid grid-cols-2 gap-x-6 gap-y-3">
+            <ul className="space-y-3">
               {navItems.map((item) => (
                 <li key={item.to}>
                   <Link
@@ -518,7 +515,7 @@ export function Footer() {
                     className="group inline-flex items-center gap-2 font-body-sm text-background-cream/80 transition-colors hover:text-primary-container"
                   >
                     {/* Reserved arrow slot so labels don't shift on hover */}
-                    <span aria-hidden="true" className="flex w-5 items-center justify-center">
+                    <span aria-hidden="true" className="flex w-4 items-center justify-center">
                       <Icon
                         name="arrow_forward"
                         size="sm"
@@ -532,56 +529,55 @@ export function Footer() {
             </ul>
           </nav>
 
-          {/* Visit + Hours */}
-          <div className="lg:col-span-4">
-            <div className="grid grid-cols-1 gap-10 sm:grid-cols-2">
-              <div>
-                <h3 className="mb-5 font-label-bold text-label-bold uppercase tracking-widest text-secondary-container">
-                  Visit us
-                </h3>
-                <address className="space-y-3 font-body-sm not-italic text-background-cream/80">
-                  <p className="flex items-start gap-2">
-                    <Icon name="location_on" size="sm" className="mt-0.5 text-primary-container" />
-                    <span>
-                      {settings?.address}, {settings?.city}
-                    </span>
-                  </p>
-                  <p>
-                    <a
-                      href={`tel:${settings?.phone}`}
-                      className="flex items-center gap-2 transition-colors hover:text-primary-container"
-                    >
-                      <Icon name="call" size="sm" className="text-primary-container" /> {settings?.phone}
-                    </a>
-                  </p>
-                  <p>
-                    <a
-                      href={`mailto:${settings?.email}`}
-                      className="flex items-center gap-2 break-all transition-colors hover:text-primary-container"
-                    >
-                      <Icon name="mail" size="sm" className="text-primary-container" /> {settings?.email}
-                    </a>
-                  </p>
-                </address>
-              </div>
-              <div>
-                <h3 className="mb-5 font-label-bold text-label-bold uppercase tracking-widest text-secondary-container">
-                  Hours
-                </h3>
-                <FooterHours hours={hours} />
-                <p className="mt-4 flex items-center gap-2 font-body-sm text-background-cream/70">
-                  <span aria-hidden="true" className="h-2 w-2 animate-pulse rounded-full bg-success-mint" />
-                  Kitchen is LIVE
-                </p>
-              </div>
-            </div>
+          {/* Visit us */}
+          <div className="lg:col-span-3">
+            <h3 className="mb-5 font-label-bold text-label-bold uppercase tracking-widest text-secondary-container">
+              Visit us
+            </h3>
+            <address className="space-y-3 font-body-sm not-italic text-background-cream/80">
+              <p className="flex items-start gap-2">
+                <Icon name="location_on" size="sm" className="mt-0.5 shrink-0 text-primary-container" />
+                <span>
+                  {settings?.address}, {settings?.city}
+                </span>
+              </p>
+              <p>
+                <a
+                  href={`tel:${settings?.phone}`}
+                  className="flex items-center gap-2 transition-colors hover:text-primary-container"
+                >
+                  <Icon name="call" size="sm" className="shrink-0 text-primary-container" /> {settings?.phone}
+                </a>
+              </p>
+              <p>
+                <a
+                  href={`mailto:${settings?.email}`}
+                  className="flex items-start gap-2 transition-colors hover:text-primary-container"
+                >
+                  <Icon name="mail" size="sm" className="mt-0.5 shrink-0 text-primary-container" />
+                  <span className="break-words">{settings?.email}</span>
+                </a>
+              </p>
+            </address>
+          </div>
+
+          {/* Hours — fixed two-column rows, no wrapping */}
+          <div className="lg:col-span-3">
+            <h3 className="mb-5 font-label-bold text-label-bold uppercase tracking-widest text-secondary-container">
+              Hours
+            </h3>
+            <FooterHours hours={hours} />
+            <p className="mt-4 flex items-center gap-2 font-body-sm text-background-cream/70">
+              <span aria-hidden="true" className="h-2 w-2 animate-pulse rounded-full bg-success-mint" />
+              Kitchen is LIVE
+            </p>
           </div>
         </div>
 
         {/* Legal bar */}
         <div className="border-t border-background-cream/15">
-          <div className="mx-auto flex max-w-container-max flex-col items-center justify-between gap-3 px-margin-mobile py-6 font-body-sm text-background-cream/60 sm:flex-row md:px-margin-desktop">
-            <p>© 2026 Crumb &amp; Confetti. All rights sprinkled with joy.</p>
+          <div className="mx-auto flex max-w-container-max flex-wrap items-center justify-center gap-x-6 gap-y-2 px-margin-mobile py-6 text-center font-body-sm text-background-cream/60 sm:justify-between md:px-margin-desktop">
+            <p>© {new Date().getFullYear()} Crumb &amp; Confetti. All rights sprinkled with joy.</p>
             <nav className="flex items-center gap-5" aria-label="Legal">
               <Link to="/privacy" className="transition-colors hover:text-primary-container">
                 Privacy
