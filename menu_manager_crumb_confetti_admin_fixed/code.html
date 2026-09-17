@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Crumb &amp; Confetti Admin - Menu Manager</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&amp;family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "background-cream": "#FFF8F0",
+                        "inverse-surface": "#392e25",
+                        "on-tertiary": "#ffffff",
+                        "inverse-on-surface": "#ffeee1",
+                        "outline-variant": "#e1bfb8",
+                        "surface-container-lowest": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "on-secondary-container": "#6f5400",
+                        "tertiary-container": "#ff6586",
+                        "surface-container": "#feeadc",
+                        "on-primary": "#ffffff",
+                        "surface-dim": "#e9d7c8",
+                        "on-tertiary-fixed-variant": "#900036",
+                        "success-mint": "#2EC4B6",
+                        "on-primary-fixed": "#3d0600",
+                        "on-error": "#ffffff",
+                        "outline": "#8d716a",
+                        "secondary-fixed": "#ffdf9a",
+                        "on-secondary": "#ffffff",
+                        "surface-white": "#FFFFFF",
+                        "on-tertiary-container": "#6a0026",
+                        "on-background": "#231a11",
+                        "primary-fixed": "#ffdad2",
+                        "error-red": "#E63946",
+                        "primary-fixed-dim": "#ffb4a3",
+                        "error": "#ba1a1a",
+                        "surface-container-low": "#fff1e8",
+                        "on-primary-container": "#661000",
+                        "surface-tint": "#ae3115",
+                        "tertiary-fixed-dim": "#ffb2bd",
+                        "primary-container": "#ff6b4a",
+                        "surface-container-highest": "#f2dfd1",
+                        "on-primary-fixed-variant": "#8c1900",
+                        "surface-bright": "#fff8f5",
+                        "primary": "#ae3115",
+                        "tertiary-fixed": "#ffd9dd",
+                        "tertiary": "#bc054a",
+                        "surface-container-high": "#f8e5d6",
+                        "surface": "#fff8f5",
+                        "secondary-fixed-dim": "#f4bf32",
+                        "secondary": "#775a00",
+                        "on-surface": "#231a11",
+                        "on-surface-variant": "#59413c",
+                        "on-secondary-fixed": "#251a00",
+                        "on-error-container": "#93000a",
+                        "on-tertiary-fixed": "#400013",
+                        "secondary-container": "#fdc73a",
+                        "background": "#fff8f5",
+                        "surface-variant": "#f2dfd1",
+                        "on-secondary-fixed-variant": "#5a4300",
+                        "inverse-primary": "#ffb4a3"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "16px",
+                        "margin-desktop": "48px",
+                        "container-max": "1280px",
+                        "unit": "8px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Fredoka"],
+                        "display": ["Fredoka"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "label-bold": ["Plus Jakarta Sans"],
+                        "headline-lg-mobile": ["Fredoka"],
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "headline-lg": ["Fredoka"],
+                        "body-sm": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "display": ["56px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "label-bold": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                        "headline-lg-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "500"}],
+                        "headline-lg": ["40px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                        "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .radical-shadow {
+            box-shadow: 4px 4px 0px 0px #231a11;
+        }
+        .radical-shadow-sm {
+            box-shadow: 2px 2px 0px 0px #231a11;
+        }
+        .radical-border {
+            border: 2px solid #231a11;
+        }
+        .radical-button-press:active {
+            transform: translate(2px, 2px);
+            box-shadow: 0px 0px 0px 0px #231a11;
+        }
+        .custom-toggle:checked + .toggle-dot {
+            transform: translateX(100%);
+            background-color: #2EC4B6;
+        }
+    </style>
+</head>
+<body class="bg-background-cream font-body-md text-on-surface">
+<!-- Mobile Top Bar (JSON Shared Component Integration) -->
+<header class="fixed top-0 w-full z-50 md:hidden bg-background-cream border-b-2 border-on-surface flex justify-between items-center px-margin-mobile py-unit">
+<h1 class="text-headline-md font-headline-md font-bold text-on-surface">CRUMB &amp; CONFETTI</h1>
+<button class="material-symbols-outlined text-primary p-2">menu</button>
+</header>
+<!-- Side Navigation Shell (JSON Mapping) -->
+<nav class="fixed left-0 top-0 h-full w-[240px] border-r-2 border-on-surface bg-background-cream hidden md:flex flex-col p-gutter justify-between z-40">
+<div class="flex flex-col gap-8">
+<div class="flex flex-col gap-2"><div class="mb-10"><h1 class="text-headline-md font-headline-md font-extrabold text-on-surface tracking-tighter leading-none">CRUMB &amp; <br/>CONFETTI</h1><p class="text-label-bold font-label-bold mt-1 text-primary uppercase tracking-widest">Baked with Joy</p></div></div>
+<nav class="flex flex-col gap-2"><a class="bg-primary-container text-on-primary font-headline-md flex items-center gap-4 py-3 px-4 border-2 border-on-surface radical-shadow transition-all" href="#"> <span class="material-symbols-outlined">bakery_dining</span> <span class="text-label-bold font-label-bold">Menu</span> </a> <a class="text-on-surface font-headline-md flex items-center gap-4 py-3 px-4 hover:bg-primary-container/10 transition-all" href="#"> <span class="material-symbols-outlined">restaurant_menu</span> <span class="text-label-bold font-label-bold">Catering</span> </a> <a class="text-on-surface font-headline-md flex items-center gap-4 py-3 px-4 hover:bg-primary-container/10 transition-all" href="#"> <span class="material-symbols-outlined">celebration</span> <span class="text-label-bold font-label-bold">Events</span> </a> <a class="text-on-surface font-headline-md flex items-center gap-4 py-3 px-4 hover:bg-primary-container/10 transition-all" href="#"> <span class="material-symbols-outlined">info</span> <span class="text-label-bold font-label-bold">About</span> </a></nav>
+</div>
+<div class="flex flex-col gap-4"><a class="text-on-surface font-headline-md flex items-center gap-4 py-3 px-4 border-2 border-transparent hover:border-on-surface hover:radical-shadow transition-all mb-2" href="#"> <span class="material-symbols-outlined">shopping_basket</span> <span class="text-label-bold font-label-bold">Cart</span> </a> <a class="bg-white text-on-surface font-label-bold py-4 px-6 border-2 border-on-surface radical-shadow radical-button-press transition-all inline-flex justify-center items-center gap-2" href="#"> <span class="material-symbols-outlined">logout</span> LOGOUT </a></div>
+</nav>
+<!-- Main Content Canvas -->
+<main class="md:ml-[240px] pt-20 md:pt-0 min-h-screen">
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-12">
+<!-- Header Section -->
+<div class="flex flex-col lg:flex-row lg:items-end justify-between gap-gutter mb-12">
+<div>
+<div class="inline-flex items-center gap-2 bg-primary-container text-white px-3 py-1 radical-border radical-shadow-sm mb-4 rounded-lg transform -rotate-1">
+<span class="material-symbols-outlined text-sm">settings</span>
+<span class="text-label-bold font-label-bold uppercase">Admin Dashboard</span>
+</div>
+<h2 class="text-headline-lg font-headline-lg text-on-surface uppercase leading-none mb-2">Menu Manager</h2>
+<p class="text-body-lg font-body-lg text-on-surface-variant max-w-xl">Curate your delightful offerings, update daily specials, and sprinkle some digital magic on your storefront.</p>
+</div>
+<button class="bg-primary-container text-white radical-border radical-shadow radical-button-press py-4 px-8 font-label-bold text-label-bold rounded-xl flex items-center justify-center gap-3 uppercase self-start lg:self-end font-headline-md">
+<span class="material-symbols-outlined">add_circle</span>
+                    Add New Item
+                </button>
+</div>
+<!-- Controls & Filters (Bento-ish Grid) -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter mb-12 items-center">
+<!-- Search Bar -->
+<div class="md:col-span-5 relative">
+<div class="absolute inset-y-0 left-4 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-on-surface-variant">search</span>
+</div>
+<input class="w-full bg-white radical-border radical-shadow-sm py-4 pl-12 pr-4 rounded-2xl focus:ring-0 focus:outline-none placeholder:text-on-surface-variant/40 font-body-md radical-shadow" placeholder="Find a tasty treat..." type="text"/>
+</div>
+<!-- Category Tabs -->
+<div class="md:col-span-7 flex flex-wrap gap-3">
+<button class="bg-secondary-container radical-border radical-shadow-sm px-6 py-3 rounded-2xl text-label-bold font-label-bold uppercase hover:bg-secondary transition-colors font-headline-md">All Items</button>
+<button class="bg-white radical-border radical-shadow-sm px-6 py-3 rounded-2xl text-label-bold font-label-bold uppercase hover:bg-secondary-container transition-colors font-headline-md">Pastries</button>
+<button class="bg-white radical-border radical-shadow-sm px-6 py-3 rounded-2xl text-label-bold font-label-bold uppercase hover:bg-secondary-container transition-colors font-headline-md">Coffee</button>
+<button class="bg-white radical-border radical-shadow-sm px-6 py-3 rounded-2xl text-label-bold font-label-bold uppercase hover:bg-secondary-container transition-colors font-headline-md">Custom Cakes</button>
+</div>
+</div>
+<!-- Item Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-gutter">
+<!-- Card 1 -->
+<div class="group bg-white radical-border radical-shadow p-4 rounded-[32px] hover:-translate-y-2 transition-transform duration-300 flex flex-col h-full relative overflow-hidden">
+<div class="absolute top-4 left-4 z-10">
+<span class="bg-secondary-container radical-border radical-shadow-sm px-3 py-1 rounded-full text-label-bold font-label-bold text-xs uppercase">Bestseller</span>
+</div>
+<div class="w-full aspect-square rounded-2xl overflow-hidden radical-border mb-4">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="A vibrant, close-up overhead shot of a Seasonal Berry Galette with a flaky, golden-brown artisanal crust. The center is overflowing with juicy, deep purple blackberries and bright red raspberries, glistening with a light sugar glaze. The background is a clean, bright, cream-colored rustic kitchen surface with a playful, celebratory bakery aesthetic, using warm lighting and high contrast." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDvvESsRHDWKvAw87u-N3VvoXHHNdGvQ7gyZv7kQVElS4y_08nacRVTMBhSXWJEBVsfBTG1q9-zi17JLj_qmz2o6uNTRW5KnS1QsLt7q43pNfmcjC8MOvnzRJU1ww52o-h7dd0tgPRzFPbfJ0uZ4hHj_UZqL8mM66-uS2xXeXYC2_HO9yqeBEEbeWDEwZhYLfkvTQQ9NaQ5HQNcU21PaBH8_8vhSc5nMZbGK-Ku4DifJR5KF1YlFsM8"/>
+</div>
+<div class="flex justify-between items-start mb-2">
+<h3 class="text-headline-md font-headline-md leading-tight text-on-surface">Seasonal Berry Galette</h3>
+<span class="text-primary font-bold text-lg">$8.00</span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant flex-grow mb-6">Hand-folded buttery pastry with a mountain of wild forest berries.</p>
+<div class="flex items-center justify-between py-4 border-t-2 border-dashed border-outline-variant">
+<div class="flex items-center gap-2">
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer custom-toggle" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-highest radical-border rounded-full peer-checked:bg-success-mint/20"></div>
+<div class="absolute left-1 top-1 w-4 h-4 bg-on-surface-variant rounded-full transition-all peer-checked:translate-x-full peer-checked:bg-success-mint toggle-dot"></div>
+</label>
+<span class="text-label-bold font-label-bold text-xs uppercase">Available</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-3 mt-auto">
+<button class="flex items-center justify-center gap-2 bg-surface-container radical-border radical-shadow-sm radical-button-press py-2 rounded-xl text-label-bold font-label-bold uppercase text-xs">
+<span class="material-symbols-outlined text-sm">edit</span> Edit
+                        </button>
+<button class="flex items-center justify-center gap-2 bg-white text-error-red radical-border radical-shadow-sm radical-button-press py-2 rounded-xl text-label-bold font-label-bold uppercase text-xs">
+<span class="material-symbols-outlined text-sm">delete</span> Delete
+                        </button>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="group bg-white radical-border radical-shadow p-4 rounded-[32px] hover:-translate-y-2 transition-transform duration-300 flex flex-col h-full relative overflow-hidden">
+<div class="w-full aspect-square rounded-2xl overflow-hidden radical-border mb-4">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="A professional barista-poured latte with intricate foam art shaped like a heart, served in a heavy ceramic teal mug. The coffee is rich and dark, contrasted by the creamy white foam. Beside the mug sits a small, hand-painted ceramic plate with a sprinkle of chocolate shavings. The lighting is warm and inviting, emphasizing the energetic and celebratory mood of a high-end boutique cafe." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCPNShXSSbrq24h8w1hjSQb2l2Y3WXijJ1YqlHQu7SpOpHBjcvieIUNOBP5pj30TWgnlDgdwtTFgMH5Z9gWAp-Ebt1pIQ42J9l1OJ2d05deQtACJA8pcNBP6VqASQlGPVyBex-5XGMCIdzgqFelLBAYAsMXrwFE-6KCNUAQ3DNZVgoCdNIevy_LK6qLWp1TQ4oP0bDGuk2SSWd8418MLQAASyaG5VdIECBd7sZTLx72u5KFbcFtJFOW"/>
+</div>
+<div class="flex justify-between items-start mb-2">
+<h3 class="text-headline-md font-headline-md leading-tight text-on-surface">Confetti Latte</h3>
+<span class="text-primary font-bold text-lg">$6.50</span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant flex-grow mb-6">Signature blend with vanilla foam and a dash of edible sparkles.</p>
+<div class="flex items-center justify-between py-4 border-t-2 border-dashed border-outline-variant">
+<div class="flex items-center gap-2">
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer custom-toggle" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-highest radical-border rounded-full peer-checked:bg-success-mint/20"></div>
+<div class="absolute left-1 top-1 w-4 h-4 bg-on-surface-variant rounded-full transition-all peer-checked:translate-x-full peer-checked:bg-success-mint toggle-dot"></div>
+</label>
+<span class="text-label-bold font-label-bold text-xs uppercase">Available</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-3 mt-auto">
+<button class="flex items-center justify-center gap-2 bg-surface-container radical-border radical-shadow-sm radical-button-press py-2 rounded-xl text-label-bold font-label-bold uppercase text-xs">
+<span class="material-symbols-outlined text-sm">edit</span> Edit
+                        </button>
+<button class="flex items-center justify-center gap-2 bg-white text-error-red radical-border radical-shadow-sm radical-button-press py-2 rounded-xl text-label-bold font-label-bold uppercase text-xs">
+<span class="material-symbols-outlined text-sm">delete</span> Delete
+                        </button>
+</div>
+</div>
+<!-- Card 3 (Sold Out State) -->
+<div class="group bg-white radical-border radical-shadow p-4 rounded-[32px] hover:-translate-y-2 transition-transform duration-300 flex flex-col h-full relative overflow-hidden">
+<div class="absolute top-4 left-4 z-10">
+<span class="bg-error-red text-white radical-border radical-shadow-sm px-3 py-1 rounded-full text-label-bold font-label-bold text-xs uppercase">Daily Batch Done</span>
+</div>
+<div class="w-full aspect-square rounded-2xl overflow-hidden radical-border mb-4 grayscale opacity-50">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="A towering, three-tier custom birthday cake decorated with pastel pink frosting, vibrant coral sugar flowers, and a cascade of edible gold confetti. The cake sits on a vintage black pedestal against a warm cream background. The design is bold, tactile, and festive, capturing the whimsical and silly personality of a celebration-focused bakery." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAr4ttc2DqBiWG5t0_nPr1fan7FY5Bk_TGH7a4iObhBZNy5AcvB4fWbPKi7c86vnfsyGGwlv5FRswNuGwE_Dh1Fgsui2a4NjKfxHEaok7MHNNR7mdBVmeueSVsoAvIHix5KzMkSgYucuIJqQ0-TfFn0-zS8SAisetJppBmlxQtPIDZ3dAE8ihcLnBcz6Ce6hycgkItij_xca0JmAzXaeRrPDYdQX_pm8i73gpj5m9tKioO_K9nrirY3"/>
+</div>
+<div class="flex justify-between items-start mb-2">
+<h3 class="text-headline-md font-headline-md leading-tight text-on-surface">Cloud Nine Sponge</h3>
+<span class="text-primary font-bold text-lg">$45.00</span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant flex-grow mb-6">Lemon-infused chiffon with whipped mascarpone and honey.</p>
+<div class="flex items-center justify-between py-4 border-t-2 border-dashed border-outline-variant">
+<div class="flex items-center gap-2">
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer custom-toggle" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-highest radical-border rounded-full peer-checked:bg-success-mint/20"></div>
+<div class="absolute left-1 top-1 w-4 h-4 bg-on-surface-variant rounded-full transition-all peer-checked:translate-x-full peer-checked:bg-success-mint toggle-dot"></div>
+</label>
+<span class="text-label-bold font-label-bold text-xs uppercase text-error">Sold Out</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-3 mt-auto">
+<button class="flex items-center justify-center gap-2 bg-surface-container radical-border radical-shadow-sm radical-button-press py-2 rounded-xl text-label-bold font-label-bold uppercase text-xs">
+<span class="material-symbols-outlined text-sm">edit</span> Edit
+                        </button>
+<button class="flex items-center justify-center gap-2 bg-white text-error-red radical-border radical-shadow-sm radical-button-press py-2 rounded-xl text-label-bold font-label-bold uppercase text-xs">
+<span class="material-symbols-outlined text-sm">delete</span> Delete
+                        </button>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="group bg-white radical-border radical-shadow p-4 rounded-[32px] hover:-translate-y-2 transition-transform duration-300 flex flex-col h-full relative overflow-hidden">
+<div class="w-full aspect-square rounded-2xl overflow-hidden radical-border mb-4">
+<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" data-alt="A large, oversized chocolate chip cookie with pools of dark melted chocolate and flakes of sea salt on top. The cookie is served warm on a brown parchment paper sheet. The background is a vibrant coral color with hand-drawn white stars and bakery doodles. The shot is high-contrast, energetic, and emphasizes a handcrafted, tactile feeling." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAcluJlSpfHSEcCA0uJtBsvAgfoo3e7WAWF4vx2oL8UEnr-WI1liHAExa7h100GtrmW7jzjZthKm4nl2rJMUT3MgKmcHPkgAzIQOaQXxVUTiPH6x4p-zgb3wlH0vsWuYGbil6dsJYoGB-qNYLjqSCQvDzlf8hNPy3aiR61EkNOlUKp6or-u_lHV0aFliUz_GQtm0OTeHk1MNFI-5d7FdTxGfwSwoLIv5cHptfoYrGCfcCd0wGGc3EUi"/>
+</div>
+<div class="flex justify-between items-start mb-2">
+<h3 class="text-headline-md font-headline-md leading-tight text-on-surface">The Salty Sprink</h3>
+<span class="text-primary font-bold text-lg">$4.00</span>
+</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant flex-grow mb-6">Massive dark chocolate chunk cookie with smoked sea salt.</p>
+<div class="flex items-center justify-between py-4 border-t-2 border-dashed border-outline-variant">
+<div class="flex items-center gap-2">
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer custom-toggle" type="checkbox"/>
+<div class="w-11 h-6 bg-surface-container-highest radical-border rounded-full peer-checked:bg-success-mint/20"></div>
+<div class="absolute left-1 top-1 w-4 h-4 bg-on-surface-variant rounded-full transition-all peer-checked:translate-x-full peer-checked:bg-success-mint toggle-dot"></div>
+</label>
+<span class="text-label-bold font-label-bold text-xs uppercase">Available</span>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-3 mt-auto">
+<button class="flex items-center justify-center gap-2 bg-surface-container radical-border radical-shadow-sm radical-button-press py-2 rounded-xl text-label-bold font-label-bold uppercase text-xs">
+<span class="material-symbols-outlined text-sm">edit</span> Edit
+                        </button>
+<button class="flex items-center justify-center gap-2 bg-white text-error-red radical-border radical-shadow-sm radical-button-press py-2 rounded-xl text-label-bold font-label-bold uppercase text-xs">
+<span class="material-symbols-outlined text-sm">delete</span> Delete
+                        </button>
+</div>
+</div>
+</div>
+<!-- Hand-drawn Divider Decoration -->
+<div class="mt-24 flex justify-center opacity-20 select-none pointer-events-none">
+<span class="material-symbols-outlined text-9xl">auto_awesome</span>
+</div>
+</div>
+</main>
+<!-- Footer Integration (JSON Mapping) -->
+<footer class="md:ml-[240px] bg-surface-container px-margin-desktop py-12">
+<div class="max-w-container-max mx-auto grid grid-cols-1 md:grid-cols-4 gap-gutter">
+<div class="col-span-1 md:col-span-2">
+<div class="text-headline-md font-headline-md text-on-surface font-bold mb-4">CRUMB &amp; CONFETTI</div>
+<p class="text-body-sm font-body-sm text-on-surface-variant max-w-sm">Crafting moments of pure delight, one sprinkle at a time. From artisanal crusts to the perfect crema, we believe every bite is a celebration.</p>
+</div>
+<div class="flex flex-col gap-2">
+<div class="text-label-bold font-label-bold uppercase text-primary mb-2">Explore</div>
+<a class="text-body-sm font-body-sm text-on-surface-variant hover:text-primary transition-all underline" href="#">Menu</a>
+<a class="text-body-sm font-body-sm text-on-surface-variant hover:text-primary transition-all underline" href="#">Catering</a>
+<a class="text-body-sm font-body-sm text-on-surface-variant hover:text-primary transition-all underline" href="#">Events</a>
+</div>
+<div class="flex flex-col gap-2">
+<div class="text-label-bold font-label-bold uppercase text-primary mb-2">Company</div>
+<a class="text-body-sm font-body-sm text-on-surface-variant hover:text-primary transition-all underline" href="#">Privacy Policy</a>
+<a class="text-body-sm font-body-sm text-on-surface-variant hover:text-primary transition-all underline" href="#">Contact</a>
+<a class="text-body-sm font-body-sm text-on-surface-variant hover:text-primary transition-all underline" href="#">About Us</a>
+</div>
+</div>
+<div class="max-w-container-max mx-auto border-t-2 border-outline-variant/30 mt-12 pt-8 text-center text-body-sm font-body-sm text-on-surface-variant">
+            © 2024 Crumb &amp; Confetti. All rights sprinkled with joy.
+        </div>
+</footer>
+<script>
+        // Simple micro-interaction for item cards
+        document.querySelectorAll('.radical-button-press').forEach(button => {
+            button.addEventListener('mousedown', () => {
+                button.classList.add('scale-95');
+            });
+            button.addEventListener('mouseup', () => {
+                button.classList.remove('scale-95');
+            });
+            button.addEventListener('mouseleave', () => {
+                button.classList.remove('scale-95');
+            });
+        });
+    </script>
+</body></html>

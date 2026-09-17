@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Reserve a Table - Sprinkle &amp; Sip</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300;400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary-fixed": "#3d0600",
+                        "on-primary-container": "#661000",
+                        "on-surface": "#231a11",
+                        "outline-variant": "#e1bfb8",
+                        "on-surface-variant": "#59413c",
+                        "surface-dim": "#e9d7c8",
+                        "surface-container-high": "#f8e5d6",
+                        "on-tertiary-fixed": "#400013",
+                        "surface-bright": "#fff8f5",
+                        "inverse-surface": "#392e25",
+                        "on-error": "#ffffff",
+                        "on-tertiary": "#ffffff",
+                        "surface-variant": "#f2dfd1",
+                        "tertiary-fixed-dim": "#ffb2bd",
+                        "tertiary": "#bc054a",
+                        "inverse-on-surface": "#ffeee1",
+                        "on-tertiary-container": "#6a0026",
+                        "on-secondary-fixed-variant": "#5a4300",
+                        "on-error-container": "#93000a",
+                        "surface-white": "#FFFFFF",
+                        "primary-container": "#ff6b4a",
+                        "on-primary": "#ffffff",
+                        "background": "#fff8f5",
+                        "secondary-fixed-dim": "#f4bf32",
+                        "error-red": "#E63946",
+                        "secondary-fixed": "#ffdf9a",
+                        "on-background": "#231a11",
+                        "error-container": "#ffdad6",
+                        "surface-container-low": "#fff1e8",
+                        "surface": "#fff8f5",
+                        "tertiary-container": "#ff6586",
+                        "surface-container-highest": "#f2dfd1",
+                        "primary": "#ae3115",
+                        "secondary": "#775a00",
+                        "on-secondary-fixed": "#251a00",
+                        "inverse-primary": "#ffb4a3",
+                        "success-mint": "#2EC4B6",
+                        "primary-fixed": "#ffdad2",
+                        "on-primary-fixed-variant": "#8c1900",
+                        "error": "#ba1a1a",
+                        "background-cream": "#FFF8F0",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-fixed-dim": "#ffb4a3",
+                        "on-secondary": "#ffffff",
+                        "secondary-container": "#fdc73a",
+                        "surface-container": "#feeadc",
+                        "on-tertiary-fixed-variant": "#900036",
+                        "on-secondary-container": "#6f5400",
+                        "tertiary-fixed": "#ffd9dd",
+                        "surface-tint": "#ae3115",
+                        "outline": "#8d716a"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "container-max": "1280px",
+                        "margin-mobile": "16px",
+                        "margin-desktop": "48px",
+                        "gutter": "24px",
+                        "unit": "8px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Fredoka"],
+                        "body-sm": ["Plus Jakarta Sans"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "display": ["Fredoka"],
+                        "label-bold": ["Plus Jakarta Sans"],
+                        "headline-md": ["Fredoka"],
+                        "headline-lg-mobile": ["Fredoka"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["40px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                        "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "500"}],
+                        "display": ["56px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                        "label-bold": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: #FFF8F0;
+            background-image: 
+                radial-gradient(#ff6b4a 1.5px, transparent 1.5px), 
+                radial-gradient(#fdc73a 1.5px, transparent 1.5px);
+            background-size: 40px 40px;
+            background-position: 0 0, 20px 20px;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .sprinkle-pattern {
+            mask-image: radial-gradient(circle, white 1px, transparent 1.5px);
+            mask-size: 20px 20px;
+        }
+
+        .card-shadow {
+            box-shadow: 4px 4px 0px 0px #231a11;
+        }
+
+        .btn-active {
+            transform: scale(0.95);
+        }
+
+        .custom-calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 4px;
+        }
+
+        .step-pill {
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+    </style>
+</head>
+<body class="font-body-md text-on-surface min-h-screen flex flex-col items-center">
+<!-- TopAppBar (Based on Shared Components) -->
+<header class="w-full sticky top-0 bg-surface dark:bg-surface-dim z-40 flex items-center justify-between px-margin-mobile py-4">
+<button class="flex items-center justify-center p-2 rounded-full hover:bg-surface-container-high transition-colors text-primary active:scale-95 duration-150">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<h1 class="font-headline-md text-headline-md-mobile text-primary dark:text-inverse-primary font-bold">Reserve a Table</h1>
+<button class="flex items-center justify-center p-2 rounded-full hover:bg-surface-container-high transition-colors text-primary active:scale-95 duration-150">
+<span class="material-symbols-outlined">close</span>
+</button>
+</header>
+<main class="w-full max-w-md px-margin-mobile flex-grow pb-40">
+<!-- Progress Indicator -->
+<div class="mt-6 mb-8">
+<div class="flex justify-between items-center mb-3 px-1">
+<span class="font-label-bold text-label-bold text-primary uppercase tracking-widest">Step 1: Details</span>
+<span class="font-label-bold text-label-bold text-on-surface-variant">1 of 3</span>
+</div>
+<div class="flex gap-2 h-3">
+<div class="flex-1 bg-primary-container rounded-full step-pill border-2 border-on-surface"></div>
+<div class="flex-1 bg-surface-container-high rounded-full step-pill border-2 border-on-surface/10"></div>
+<div class="flex-1 bg-surface-container-high rounded-full step-pill border-2 border-on-surface/10"></div>
+</div>
+</div>
+<!-- Party Size Selector -->
+<section class="mb-10">
+<h2 class="font-headline-md text-headline-md text-on-surface mb-6 flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">groups</span>
+                How many guests?
+            </h2>
+<div class="grid grid-cols-3 gap-4">
+<button class="party-btn h-16 w-full rounded-full border-2 border-on-surface flex items-center justify-center font-display text-2xl bg-white card-shadow active:scale-95 transition-all" onclick="selectPartySize(this, 1)">1</button>
+<button class="party-btn h-16 w-full rounded-full border-2 border-on-surface flex items-center justify-center font-display text-2xl bg-primary-container text-on-primary-container card-shadow active:scale-95 transition-all" onclick="selectPartySize(this, 2)">2</button>
+<button class="party-btn h-16 w-full rounded-full border-2 border-on-surface flex items-center justify-center font-display text-2xl bg-white card-shadow active:scale-95 transition-all" onclick="selectPartySize(this, 3)">3</button>
+<button class="party-btn h-16 w-full rounded-full border-2 border-on-surface flex items-center justify-center font-display text-2xl bg-white card-shadow active:scale-95 transition-all" onclick="selectPartySize(this, 4)">4</button>
+<button class="party-btn h-16 w-full rounded-full border-2 border-on-surface flex items-center justify-center font-display text-2xl bg-white card-shadow active:scale-95 transition-all" onclick="selectPartySize(this, 5)">5</button>
+<button class="party-btn h-16 w-full rounded-full border-2 border-on-surface flex items-center justify-center font-display text-2xl bg-white card-shadow active:scale-95 transition-all" onclick="selectPartySize(this, '6+')">6+</button>
+</div>
+</section>
+<!-- Select Date Calendar -->
+<section class="mb-8">
+<div class="flex items-center justify-between mb-6">
+<h2 class="font-headline-md text-headline-md text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">calendar_today</span>
+                    When?
+                </h2>
+<div class="text-on-surface-variant font-label-bold text-label-bold bg-surface-container px-3 py-1 rounded-full border border-outline-variant">June 2024</div>
+</div>
+<div class="bg-white rounded-[24px] border-2 border-on-surface p-4 card-shadow relative overflow-hidden">
+<!-- Decorative Sprinkle Element using the provided IMAGE_2 contextually in a small corner or mask -->
+<div class="absolute -right-12 -top-12 w-32 h-32 opacity-10 pointer-events-none rotate-12" style="background-image: url('https://lh3.googleusercontent.com/aida/AP1WRLtZ9-gfV506pQPccOyB2vg86m46J9r88UBFCSxTu8GFwY_NI-7mDqTTRk5WVe3mtcSnfAQv8ph2YQktzI5Sg-FoMnXOW7LrCSHQsrlbN3zbsljytJYghJFHESpcqJx2ZXerT8m9cneyfvGv5R6JU1vhxyyeSZvJ99JVBbzJl4niagzf3uKmWCNtqTTC-NS_RbCDrBUoZKtaQ58q6ZT50VdODdY3UnRDuajUgpByPtTomMTBjxGJch3I9j0'); background-size: cover;"></div>
+<div class="custom-calendar-grid mb-2">
+<div class="text-center font-label-bold text-on-surface-variant opacity-50 py-2">S</div>
+<div class="text-center font-label-bold text-on-surface-variant opacity-50 py-2">M</div>
+<div class="text-center font-label-bold text-on-surface-variant opacity-50 py-2">T</div>
+<div class="text-center font-label-bold text-on-surface-variant opacity-50 py-2">W</div>
+<div class="text-center font-label-bold text-on-surface-variant opacity-50 py-2">T</div>
+<div class="text-center font-label-bold text-on-surface-variant opacity-50 py-2">F</div>
+<div class="text-center font-label-bold text-on-surface-variant opacity-50 py-2">S</div>
+<!-- Calendar Days Example -->
+<div class="h-12 flex items-center justify-center text-on-surface-variant opacity-20">26</div>
+<div class="h-12 flex items-center justify-center text-on-surface-variant opacity-20">27</div>
+<div class="h-12 flex items-center justify-center text-on-surface-variant opacity-20">28</div>
+<div class="h-12 flex items-center justify-center text-on-surface-variant opacity-20">29</div>
+<div class="h-12 flex items-center justify-center text-on-surface-variant opacity-20">30</div>
+<div class="h-12 flex items-center justify-center text-on-surface-variant opacity-20">31</div>
+<div class="h-12 flex items-center justify-center border-2 border-on-surface rounded-xl font-bold bg-secondary-container text-on-secondary-container relative">
+                        1
+                        <span class="absolute bottom-1 w-1 h-1 bg-on-secondary-container rounded-full"></span>
+</div>
+<div class="h-12 flex items-center justify-center rounded-xl hover:bg-surface-container transition-colors">2</div>
+<div class="h-12 flex items-center justify-center rounded-xl hover:bg-surface-container transition-colors">3</div>
+<div class="h-12 flex items-center justify-center rounded-xl font-bold bg-primary-container text-on-primary border-2 border-on-surface shadow-[2px_2px_0px_black] z-10">4</div>
+<div class="h-12 flex items-center justify-center rounded-xl bg-secondary-fixed/30 relative">5<span class="absolute bottom-1 w-1 h-1 bg-secondary rounded-full"></span></div>
+<div class="h-12 flex items-center justify-center rounded-xl bg-secondary-fixed/30 relative">6<span class="absolute bottom-1 w-1 h-1 bg-secondary rounded-full"></span></div>
+<div class="h-12 flex items-center justify-center rounded-xl hover:bg-surface-container transition-colors">7</div>
+<div class="h-12 flex items-center justify-center rounded-xl hover:bg-surface-container transition-colors">8</div>
+<div class="h-12 flex items-center justify-center rounded-xl bg-secondary-fixed/30 relative">9<span class="absolute bottom-1 w-1 h-1 bg-secondary rounded-full"></span></div>
+<div class="h-12 flex items-center justify-center rounded-xl hover:bg-surface-container transition-colors">10</div>
+<div class="h-12 flex items-center justify-center rounded-xl hover:bg-surface-container transition-colors">11</div>
+<div class="h-12 flex items-center justify-center rounded-xl bg-secondary-fixed/30 relative">12<span class="absolute bottom-1 w-1 h-1 bg-secondary rounded-full"></span></div>
+<div class="h-12 flex items-center justify-center rounded-xl hover:bg-surface-container transition-colors">13</div>
+<div class="h-12 flex items-center justify-center rounded-xl hover:bg-surface-container transition-colors">14</div>
+<div class="h-12 flex items-center justify-center rounded-xl hover:bg-surface-container transition-colors">15</div>
+</div>
+<div class="mt-4 pt-4 border-t border-dashed border-outline flex items-center justify-around">
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 rounded-full bg-secondary-fixed border border-on-surface"></div>
+<span class="text-[12px] font-label-bold text-on-surface-variant">High Availability</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 rounded-full bg-primary-container border border-on-surface"></div>
+<span class="text-[12px] font-label-bold text-on-surface-variant">Selected</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Decorative Info Card -->
+<div class="bg-surface-container-low border-2 border-on-surface rounded-2xl p-4 flex gap-4 items-start mb-12">
+<div class="bg-secondary-container p-2 rounded-xl border border-on-surface">
+<span class="material-symbols-outlined text-on-secondary-container">celebration</span>
+</div>
+<div>
+<h3 class="font-bold text-on-surface">Planning a party?</h3>
+<p class="text-sm text-on-surface-variant">For groups larger than 8, please contact us directly for special event packages!</p>
+</div>
+</div>
+</main>
+<!-- Summary Footer (Based on BottomNavBar Logic) -->
+<footer class="fixed bottom-0 w-full z-50 rounded-t-[32px] bg-white border-t-4 border-on-surface shadow-[0_-10px_40px_rgba(255,107,74,0.15)] p-6">
+<div class="max-w-md mx-auto">
+<div class="flex flex-col gap-4">
+<div class="flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-label-bold text-primary uppercase text-xs tracking-tighter" id="summary-label">Your Selection</span>
+<p class="font-headline-md text-on-surface leading-tight" id="summary-details">
+                            Reserving for <span class="text-primary font-bold">2</span> Guests on <span class="text-primary font-bold">Jun 4</span>
+</p>
+</div>
+<div class="h-12 w-12 rounded-full overflow-hidden border-2 border-on-surface rotate-3 shadow-sm">
+<div class="w-full h-full bg-cover bg-center" style="background-image: url('https://lh3.googleusercontent.com/aida/AP1WRLtZ9-gfV506pQPccOyB2vg86m46J9r88UBFCSxTu8GFwY_NI-7mDqTTRk5WVe3mtcSnfAQv8ph2YQktzI5Sg-FoMnXOW7LrCSHQsrlbN3zbsljytJYghJFHESpcqJx2ZXerT8m9cneyfvGv5R6JU1vhxyyeSZvJ99JVBbzJl4niagzf3uKmWCNtqTTC-NS_RbCDrBUoZKtaQ58q6ZT50VdODdY3UnRDuajUgpByPtTomMTBjxGJch3I9j0')"></div>
+</div>
+</div>
+<button class="w-full bg-primary-container text-on-primary font-display text-xl py-4 rounded-2xl border-2 border-on-surface shadow-[4px_4px_0px_black] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_black] active:translate-y-[2px] active:shadow-none transition-all flex items-center justify-center gap-2">
+                    CONTINUE TO TIME
+                    <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</div>
+</footer>
+<script>
+        function selectPartySize(btn, value) {
+            // Reset all buttons
+            document.querySelectorAll('.party-btn').forEach(b => {
+                b.classList.remove('bg-primary-container', 'text-on-primary-container');
+                b.classList.add('bg-white');
+            });
+            
+            // Highlight selected
+            btn.classList.remove('bg-white');
+            btn.classList.add('bg-primary-container', 'text-on-primary-container');
+            
+            // Update summary
+            document.getElementById('summary-details').innerHTML = `Reserving for <span class="text-primary font-bold">${value}</span> Guests on <span class="text-primary font-bold">Jun 4</span>`;
+            
+            // Feedback
+            btn.classList.add('scale-90');
+            setTimeout(() => btn.classList.remove('scale-90'), 150);
+        }
+
+        // Lightweight interactive hover for buttons
+        document.querySelectorAll('button').forEach(button => {
+            button.addEventListener('mousedown', () => button.classList.add('active:scale-95'));
+        });
+    </script>
+</body></html>

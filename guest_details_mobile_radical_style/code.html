@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Crumb &amp; Confetti | Guest Details</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&amp;family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary": "#ae3115",
+                        "on-error-container": "#93000a",
+                        "on-secondary-fixed-variant": "#5a4300",
+                        "surface-container-low": "#fff1e8",
+                        "surface-container": "#feeadc",
+                        "tertiary-fixed": "#ffd9dd",
+                        "inverse-primary": "#ffb4a3",
+                        "surface-dim": "#e9d7c8",
+                        "on-secondary": "#ffffff",
+                        "on-tertiary-fixed-variant": "#900036",
+                        "on-secondary-container": "#6f5400",
+                        "on-tertiary-fixed": "#400013",
+                        "surface-white": "#FFFFFF",
+                        "secondary-container": "#fdc73a",
+                        "secondary": "#775a00",
+                        "on-primary-fixed-variant": "#8c1900",
+                        "surface-container-highest": "#f2dfd1",
+                        "surface-bright": "#fff8f5",
+                        "on-primary": "#ffffff",
+                        "on-secondary-fixed": "#251a00",
+                        "background": "#fff8f5",
+                        "on-tertiary-container": "#6a0026",
+                        "on-background": "#231a11",
+                        "primary-fixed-dim": "#ffb4a3",
+                        "on-tertiary": "#ffffff",
+                        "primary-fixed": "#ffdad2",
+                        "secondary-fixed-dim": "#f4bf32",
+                        "background-cream": "#FFF8F0",
+                        "surface-tint": "#ae3115",
+                        "success-mint": "#2EC4B6",
+                        "tertiary-container": "#ff6586",
+                        "on-surface": "#231a11",
+                        "surface": "#fff8f5",
+                        "outline-variant": "#e1bfb8",
+                        "error-red": "#E63946",
+                        "tertiary": "#bc054a",
+                        "inverse-surface": "#392e25",
+                        "surface-variant": "#f2dfd1",
+                        "primary-container": "#ff6b4a",
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-on-surface": "#ffeee1",
+                        "surface-container-high": "#f8e5d6",
+                        "on-primary-fixed": "#3d0600",
+                        "error": "#ba1a1a",
+                        "tertiary-fixed-dim": "#ffb2bd",
+                        "secondary-fixed": "#ffdf9a",
+                        "on-primary-container": "#661000",
+                        "outline": "#8d716a",
+                        "error-container": "#ffdad6",
+                        "on-surface-variant": "#59413c",
+                        "on-error": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "unit": "8px",
+                        "gutter": "24px",
+                        "margin-mobile": "16px",
+                        "margin-desktop": "48px",
+                        "container-max": "1280px"
+                    },
+                    "fontFamily": {
+                        "body-md": ["Plus Jakarta Sans"],
+                        "headline-md": ["Fredoka"],
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "label-bold": ["Plus Jakarta Sans"],
+                        "display": ["Fredoka"],
+                        "body-sm": ["Plus Jakarta Sans"],
+                        "headline-lg-mobile": ["Fredoka"],
+                        "headline-lg": ["Fredoka"]
+                    },
+                    "fontSize": {
+                        "body-md": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "headline-md": ["24px", { "lineHeight": "1.3", "fontWeight": "600" }],
+                        "body-lg": ["18px", { "lineHeight": "1.6", "fontWeight": "500" }],
+                        "label-bold": ["14px", { "lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "700" }],
+                        "display": ["56px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "body-sm": ["14px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "headline-lg-mobile": ["32px", { "lineHeight": "1.2", "fontWeight": "600" }],
+                        "headline-lg": ["40px", { "lineHeight": "1.2", "fontWeight": "600" }]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .sprinkle-bg {
+            background-image: radial-gradient(#ff6b4a 1px, transparent 1px), radial-gradient(#fdc73a 1px, transparent 1px);
+            background-size: 20px 20px;
+            background-position: 0 0, 10px 10px;
+            opacity: 0.15;
+        }
+        .offset-shadow {
+            box-shadow: 4px 4px 0px 0px #231a11;
+        }
+        .active-press:active {
+            transform: translate(2px, 2px);
+            box-shadow: 0px 0px 0px 0px #231a11;
+        }
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: #ae3115 !important;
+            box-shadow: 4px 4px 0px 0px #ae3115 !important;
+        }
+        .custom-checkbox:checked {
+            background-color: #ff6b4a;
+            border-color: #231a11;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-cream text-on-background font-body-md min-h-screen relative overflow-x-hidden">
+<!-- Sprinkle Background Overlay -->
+<div class="fixed inset-0 sprinkle-bg pointer-events-none"></div>
+<!-- Top Navigation Anchor -->
+<header class="fixed top-0 left-0 w-full z-50 flex items-center justify-between px-margin-mobile h-16 bg-background-cream border-b-2 border-on-background">
+<button class="w-10 h-10 flex items-center justify-center hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-primary" data-icon="arrow_back">arrow_back</span>
+</button>
+<h1 class="font-headline-md text-headline-md text-primary">Reserve a Treat</h1>
+<button class="w-10 h-10 flex items-center justify-center hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-primary" data-icon="close">close</span>
+</button>
+</header>
+<main class="pt-20 pb-32 px-margin-mobile max-w-md mx-auto relative z-10">
+<!-- Step Indicator -->
+<div class="mb-8">
+<div class="flex justify-between items-end mb-2">
+<span class="font-label-bold text-label-bold text-primary uppercase tracking-widest">Step 3 of 3</span>
+<span class="font-headline-md text-primary">Almost there! 🧁</span>
+</div>
+<div class="h-4 w-full bg-surface-container rounded-full border-2 border-on-background p-0.5 overflow-hidden">
+<div class="h-full bg-primary-container rounded-full w-full border-r-2 border-on-background transition-all duration-1000 ease-out"></div>
+</div>
+</div>
+<!-- Reservation Summary Card -->
+<section class="bg-surface-white border-2 border-on-background rounded-xl p-5 mb-8 offset-shadow relative overflow-hidden">
+<div class="absolute -top-4 -right-4 w-12 h-12 bg-secondary-container border-2 border-on-background rounded-full flex items-center justify-center rotate-12">
+<span class="material-symbols-outlined text-on-background" data-icon="auto_awesome">auto_awesome</span>
+</div>
+<div class="flex justify-between items-start mb-4">
+<h2 class="font-headline-md text-headline-md">Your Selection</h2>
+<button class="text-primary font-label-bold underline decoration-2 underline-offset-4 hover:text-tertiary transition-colors">Edit</button>
+</div>
+<div class="space-y-3">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary" data-icon="calendar_today">calendar_today</span>
+<span class="font-body-lg text-body-lg">Friday, October 24</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary" data-icon="schedule">schedule</span>
+<span class="font-body-lg text-body-lg">2:30 PM — Afternoon Tea</span>
+</div>
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary" data-icon="group">group</span>
+<span class="font-body-lg text-body-lg">4 People</span>
+</div>
+</div>
+</section>
+<!-- Form Section -->
+<form class="space-y-6">
+<div>
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-on-background mb-4">Who's ordering?</h2>
+<div class="space-y-4">
+<!-- Name -->
+<div class="space-y-2">
+<label class="font-label-bold text-label-bold block ml-1">Full Name</label>
+<input class="w-full h-14 px-4 bg-surface-white border-2 border-on-background rounded-xl font-body-md text-on-background placeholder:text-on-surface-variant/50 transition-all duration-200" placeholder="e.g. Penelope Sprinkle" type="text"/>
+</div>
+<!-- Email -->
+<div class="space-y-2">
+<label class="font-label-bold text-label-bold block ml-1">Email Address</label>
+<input class="w-full h-14 px-4 bg-surface-white border-2 border-on-background rounded-xl font-body-md text-on-background placeholder:text-on-surface-variant/50 transition-all duration-200" placeholder="sweetness@bakery.com" type="email"/>
+</div>
+<!-- Phone -->
+<div class="space-y-2">
+<label class="font-label-bold text-label-bold block ml-1">Phone Number</label>
+<div class="relative">
+<input class="w-full h-14 px-4 bg-surface-white border-2 border-on-background rounded-xl font-body-md text-on-background placeholder:text-on-surface-variant/50 transition-all duration-200" placeholder="(555) 000-0000" type="tel"/>
+<div class="absolute right-4 top-1/2 -translate-y-1/2">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="phone">phone</span>
+</div>
+</div>
+</div>
+<!-- Special Requests -->
+<div class="space-y-2">
+<label class="font-label-bold text-label-bold block ml-1">Special Requests (Optional)</label>
+<textarea class="w-full p-4 bg-surface-white border-2 border-on-background rounded-xl font-body-md text-on-background placeholder:text-on-surface-variant/50 transition-all duration-200" placeholder="Allergies, high chairs, or birthday surprises!" rows="3"></textarea>
+</div>
+<!-- Checkbox -->
+<div class="flex items-start gap-3 pt-2">
+<div class="relative flex items-center justify-center">
+<input class="peer appearance-none w-6 h-6 border-2 border-on-background rounded-lg bg-surface-white checked:bg-primary transition-all duration-200 cursor-pointer" id="save_details" type="checkbox"/>
+<span class="material-symbols-outlined text-surface-white absolute opacity-0 peer-checked:opacity-100 pointer-events-none text-[18px]" data-icon="check" style="font-variation-settings: 'wght' 700;">check</span>
+</div>
+<label class="font-body-md text-body-md leading-tight cursor-pointer" for="save_details">Save my details for faster treats next time! ✨</label>
+</div>
+</div>
+</div>
+</form>
+<!-- Fun Illustration/Doodle Break -->
+<div class="mt-12 mb-8 flex justify-center opacity-40">
+<div class="flex gap-8">
+<span class="material-symbols-outlined text-primary text-4xl" data-icon="bakery_dining">bakery_dining</span>
+<span class="material-symbols-outlined text-secondary text-4xl" data-icon="celebration">celebration</span>
+<span class="material-symbols-outlined text-tertiary text-4xl" data-icon="cake">cake</span>
+</div>
+</div>
+</main>
+<!-- Fixed Bottom Bar -->
+<footer class="fixed bottom-0 left-0 w-full z-50 bg-surface-white border-t-2 border-on-background p-4 shadow-[0_-4px_0_0_rgba(35,26,17,0.05)]">
+<div class="max-w-md mx-auto">
+<button class="w-full h-16 bg-primary-container text-on-primary-container font-headline-md text-headline-md border-2 border-on-background rounded-xl offset-shadow active-press transition-all flex items-center justify-center gap-3">
+<span>CONFIRM RESERVATION</span>
+<span class="material-symbols-outlined" data-icon="send" style="font-variation-settings: 'FILL' 1;">send</span>
+</button>
+<p class="text-center font-label-bold text-[10px] uppercase text-on-surface-variant mt-2 tracking-tighter">By clicking, you agree to our Sweet Terms &amp; Conditions</p>
+</div>
+</footer>
+<!-- Micro-interaction Script -->
+<script>
+        document.querySelectorAll('input, textarea').forEach(el => {
+            el.addEventListener('focus', () => {
+                // Playful wiggle on focus
+                el.parentElement.classList.add('animate-pulse');
+                setTimeout(() => el.parentElement.classList.remove('animate-pulse'), 500);
+            });
+        });
+
+        const confirmBtn = document.querySelector('button.bg-primary-container');
+        confirmBtn.addEventListener('click', function(e) {
+            // Confetti effect placeholder logic
+            const colors = ['#ae3115', '#ff6b4a', '#fdc73a', '#bc054a'];
+            for(let i = 0; i < 20; i++) {
+                createConfetti(e.clientX, e.clientY, colors[Math.floor(Math.random() * colors.length)]);
+            }
+        });
+
+        function createConfetti(x, y, color) {
+            const confetti = document.createElement('div');
+            confetti.style.position = 'fixed';
+            confetti.style.left = x + 'px';
+            confetti.style.top = y + 'px';
+            confetti.style.width = '8px';
+            confetti.style.height = '8px';
+            confetti.style.backgroundColor = color;
+            confetti.style.borderRadius = '50%';
+            confetti.style.pointerEvents = 'none';
+            confetti.style.zIndex = '100';
+            document.body.appendChild(confetti);
+
+            const destX = (Math.random() - 0.5) * 200;
+            const destY = (Math.random() - 0.5) * 200 - 100;
+
+            confetti.animate([
+                { transform: 'translate(0, 0) scale(1)', opacity: 1 },
+                { transform: `translate(${destX}px, ${destY}px) scale(0)`, opacity: 0 }
+            ], {
+                duration: 800 + Math.random() * 400,
+                easing: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+                fill: 'forwards'
+            }).onfinish = () => confetti.remove();
+        }
+    </script>
+</body></html>

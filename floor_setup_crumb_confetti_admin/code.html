@@ -1,0 +1,421 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Floor Setup | Crumb &amp; Confetti Admin</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&amp;family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "background-cream": "#FFF8F0",
+                        "inverse-surface": "#392e25",
+                        "on-tertiary": "#ffffff",
+                        "inverse-on-surface": "#ffeee1",
+                        "outline-variant": "#e1bfb8",
+                        "surface-container-lowest": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "on-secondary-container": "#6f5400",
+                        "tertiary-container": "#ff6586",
+                        "surface-container": "#feeadc",
+                        "on-primary": "#ffffff",
+                        "surface-dim": "#e9d7c8",
+                        "on-tertiary-fixed-variant": "#900036",
+                        "success-mint": "#2EC4B6",
+                        "on-primary-fixed": "#3d0600",
+                        "on-error": "#ffffff",
+                        "outline": "#8d716a",
+                        "secondary-fixed": "#ffdf9a",
+                        "on-secondary": "#ffffff",
+                        "surface-white": "#FFFFFF",
+                        "on-tertiary-container": "#6a0026",
+                        "on-background": "#231a11",
+                        "primary-fixed": "#ffdad2",
+                        "error-red": "#E63946",
+                        "primary-fixed-dim": "#ffb4a3",
+                        "error": "#ba1a1a",
+                        "surface-container-low": "#fff1e8",
+                        "on-primary-container": "#661000",
+                        "surface-tint": "#ae3115",
+                        "tertiary-fixed-dim": "#ffb2bd",
+                        "primary-container": "#ff6b4a",
+                        "surface-container-highest": "#f2dfd1",
+                        "on-primary-fixed-variant": "#8c1900",
+                        "surface-bright": "#fff8f5",
+                        "primary": "#ae3115",
+                        "tertiary-fixed": "#ffd9dd",
+                        "tertiary": "#bc054a",
+                        "surface-container-high": "#f8e5d6",
+                        "surface": "#fff8f5",
+                        "secondary-fixed-dim": "#f4bf32",
+                        "secondary": "#775a00",
+                        "on-surface": "#231a11",
+                        "on-surface-variant": "#59413c",
+                        "on-secondary-fixed": "#251a00",
+                        "on-error-container": "#93000a",
+                        "on-tertiary-fixed": "#400013",
+                        "secondary-container": "#fdc73a",
+                        "background": "#fff8f5",
+                        "surface-variant": "#f2dfd1",
+                        "on-secondary-fixed-variant": "#5a4300",
+                        "inverse-primary": "#ffb4a3"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "16px",
+                        "margin-desktop": "48px",
+                        "container-max": "1280px",
+                        "unit": "8px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Fredoka"],
+                        "display": ["Fredoka"],
+                        "body-md": ["Plus Jakarta Sans"],
+                        "label-bold": ["Plus Jakarta Sans"],
+                        "headline-lg-mobile": ["Fredoka"],
+                        "body-lg": ["Plus Jakarta Sans"],
+                        "headline-lg": ["Fredoka"],
+                        "body-sm": ["Plus Jakarta Sans"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "display": ["56px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "label-bold": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                        "headline-lg-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "500"}],
+                        "headline-lg": ["40px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                        "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: #FFF8F0;
+            color: #231a11;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .radical-card {
+            border: 2px solid #231a11;
+            box-shadow: 4px 4px 0px #231a11;
+            transition: transform 0.1s ease, box-shadow 0.1s ease;
+        }
+        .radical-card:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 6px 6px 0px #231a11;
+        }
+        .radical-button {
+            border: 2px solid #231a11;
+            box-shadow: 3px 3px 0px #231a11;
+            transition: all 0.1s ease;
+        }
+        .radical-button:active {
+            transform: translate(2px, 2px);
+            box-shadow: 0px 0px 0px #231a11;
+        }
+        .doodle-bg {
+            background-image: radial-gradient(#ae3115 1px, transparent 1px);
+            background-size: 20px 20px;
+            opacity: 0.05;
+        }
+        .floor-grid {
+            background-image: 
+                linear-gradient(to right, #e1bfb8 1px, transparent 1px),
+                linear-gradient(to bottom, #e1bfb8 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+    </style>
+</head>
+<body class="font-body-md overflow-x-hidden">
+<!-- Sidebar Navigation -->
+<aside class="fixed left-0 top-0 h-full w-[240px] border-r-2 border-on-surface bg-background-cream flex flex-col justify-between p-gutter z-50 hidden md:flex">
+<div class="flex flex-col gap-8">
+<div class="mb-10">
+<h1 class="text-headline-md font-headline-md font-extrabold text-on-surface tracking-tighter leading-none">CRUMB &amp; <br>CONFETTI</h1>
+<p class="text-body-sm font-body-sm mt-1 opacity-70">Baked with Joy</p>
+</div>
+<nav class="flex flex-col gap-2"><a class="text-on-surface font-bold flex items-center gap-4 py-3 hover:bg-primary-container hover:text-on-primary-container transition-all" href="#"><span class="material-symbols-outlined">bakery_dining</span><span class="text-label-bold font-label-bold">Menu</span></a><a class="text-primary font-bold flex items-center gap-4 py-3 bg-primary-container text-on-primary-container transition-all scale-95 duration-100 border-2 border-on-surface radical-shadow" href="#"><span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">restaurant_menu</span><span class="text-label-bold font-label-bold">Catering</span></a><a class="text-on-surface font-bold flex items-center gap-4 py-3 hover:bg-primary-container hover:text-on-primary-container transition-all" href="#"><span class="material-symbols-outlined">celebration</span><span class="text-label-bold font-label-bold">Events</span></a><a class="text-on-surface font-bold flex items-center gap-4 py-3 hover:bg-primary-container hover:text-on-primary-container transition-all" href="#"><span class="material-symbols-outlined">info</span><span class="text-label-bold font-label-bold">About</span></a></nav>
+</div>
+<div class="flex flex-col gap-4"><a class="text-on-surface font-bold flex items-center gap-4 py-3 hover:bg-primary-container hover:text-on-primary-container transition-all" href="#"><span class="material-symbols-outlined">shopping_basket</span><span class="text-label-bold font-label-bold">Cart</span></a><button class="bg-primary-container text-on-primary font-label-bold py-4 px-6 border-2 border-on-surface radical-shadow hover:scale-105 active:scale-95 transition-all inline-flex justify-center items-center uppercase">Logout</button></div>
+</aside>
+<!-- Main Content -->
+<main class="md:ml-[240px] p-margin-desktop min-h-screen relative">
+<div class="absolute inset-0 doodle-bg pointer-events-none"></div>
+<!-- Page Header -->
+<header class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-12 relative z-10">
+<div>
+<h2 class="text-headline-lg font-headline-lg text-on-surface leading-tight font-extrabold">Floor Setup</h2>
+<p class="text-body-md text-on-surface-variant">Design and manage your bakery's seating arrangements.</p>
+</div>
+<div class="flex gap-4"><button class="radical-button bg-secondary-container text-on-secondary-container font-label-bold px-6 py-3 rounded-xl flex items-center gap-2 border-2 border-on-surface radical-shadow"><span class="material-symbols-outlined">grid_view</span>MANAGE SECTIONS</button><button class="radical-button bg-primary-container text-on-primary-container font-label-bold px-6 py-3 rounded-xl flex items-center gap-2 border-2 border-on-surface radical-shadow"><span class="material-symbols-outlined">add_circle</span>ADD TABLE</button></div>
+</header>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter relative z-10">
+<!-- Floor Map Visualizer -->
+<section class="lg:col-span-8 flex flex-col gap-gutter">
+<div class="radical-card bg-white rounded-2xl p-6 min-h-[500px] flex flex-col">
+<div class="flex justify-between items-center mb-6">
+<h3 class="text-headline-md font-headline-md text-on-surface">Edit Floor Map</h3>
+<div class="flex items-center gap-3 bg-surface-container-low px-4 py-2 rounded-full border border-on-surface/10">
+<span class="text-body-sm font-label-bold text-on-surface-variant">Zoom</span>
+<input class="accent-primary w-24" type="range">
+</div>
+</div>
+<div class="flex-grow floor-grid border-2 border-on-surface/5 rounded-xl relative overflow-hidden bg-background-cream/50">
+<!-- Simulated Tables -->
+<!-- Table 1 (Main Hall) -->
+<div class="absolute top-20 left-20 w-24 h-24 radical-card bg-surface-white flex flex-col items-center justify-center cursor-move" title="Table 1">
+<span class="text-label-bold text-on-surface">T-01</span>
+<span class="material-symbols-outlined text-secondary">groups</span>
+<span class="text-[10px] font-bold text-on-surface-variant">4 Seats</span>
+</div>
+<!-- Table 2 (Main Hall) -->
+<div class="absolute top-20 left-64 w-24 h-24 radical-card bg-surface-white flex flex-col items-center justify-center cursor-move" title="Table 2">
+<span class="text-label-bold text-on-surface">T-02</span>
+<span class="material-symbols-outlined text-secondary">groups</span>
+<span class="text-[10px] font-bold text-on-surface-variant">4 Seats</span>
+</div>
+<!-- Table 3 (Communal) -->
+<div class="absolute top-64 left-20 w-80 h-24 radical-card bg-surface-container-high flex flex-col items-center justify-center cursor-move border-dashed" title="Communal Table">
+<span class="text-label-bold text-on-surface">C-01</span>
+<span class="material-symbols-outlined text-tertiary">diversity_3</span>
+<span class="text-[10px] font-bold text-on-surface-variant">12 Seats</span>
+</div>
+<!-- Table 4 (Patio) -->
+<div class="absolute top-20 right-20 w-20 h-20 radical-card bg-success-mint/20 border-success-mint flex flex-col items-center justify-center cursor-move" title="Patio 1">
+<div class="absolute -top-3 -right-3 bg-success-mint text-white rounded-full p-1 border-2 border-on-surface">
+<span class="material-symbols-outlined text-xs">sunny</span>
+</div>
+<span class="text-label-bold text-on-surface">P-01</span>
+<span class="material-symbols-outlined text-on-surface-variant">person</span>
+<span class="text-[10px] font-bold text-on-surface-variant">2 Seats</span>
+</div>
+<!-- Divider Decorative Doodles -->
+<div class="absolute bottom-10 right-10 opacity-10">
+<span class="material-symbols-outlined text-[120px]">cake</span>
+</div>
+</div>
+</div>
+<!-- Legend Section -->
+<div class="radical-card bg-surface-container-highest rounded-2xl p-6">
+<h4 class="text-label-bold font-label-bold text-on-surface uppercase mb-4 tracking-widest">Legend &amp; Symbols</h4>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg border-2 border-on-surface bg-white flex items-center justify-center">
+<span class="material-symbols-outlined text-sm">person</span>
+</div>
+<span class="text-body-sm font-bold text-on-surface-variant">2-Seater</span>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg border-2 border-on-surface bg-white flex items-center justify-center">
+<span class="material-symbols-outlined text-sm">groups</span>
+</div>
+<span class="text-body-sm font-bold text-on-surface-variant">4-Seater</span>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-12 h-8 rounded-lg border-2 border-on-surface bg-surface-container-high flex items-center justify-center">
+<span class="material-symbols-outlined text-sm">diversity_3</span>
+</div>
+<span class="text-body-sm font-bold text-on-surface-variant">Communal</span>
+</div>
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg border-2 border-success-mint bg-success-mint/20 flex items-center justify-center">
+<span class="material-symbols-outlined text-sm text-success-mint">sunny</span>
+</div>
+<span class="text-body-sm font-bold text-on-surface-variant">Patio Area</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Table Details Side List -->
+<aside class="lg:col-span-4 flex flex-col gap-gutter">
+<div class="radical-card bg-white rounded-2xl p-6 h-full">
+<div class="flex justify-between items-center mb-6">
+<h3 class="text-headline-md font-headline-md text-on-surface">Tables</h3>
+<span class="bg-primary text-white text-[10px] px-2 py-1 rounded font-bold border-2 border-on-surface">12 TOTAL</span>
+</div>
+<div class="space-y-4 max-h-[700px] overflow-y-auto pr-2 custom-scrollbar">
+<!-- Table Card 1 -->
+<div class="p-4 rounded-xl border-2 border-on-surface bg-background-cream flex flex-col gap-3 relative group overflow-hidden">
+<div class="flex justify-between items-start">
+<div>
+<h4 class="text-label-bold font-label-bold text-on-surface">Table 1</h4>
+<p class="text-body-sm text-on-surface-variant">Main Hall • Row A</p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox">
+<div class="w-11 h-6 bg-surface-container rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-success-mint border-2 border-on-surface"></div>
+</label>
+</div>
+<div class="flex gap-4">
+<div class="bg-white border-2 border-on-surface px-2 py-1 rounded-lg flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">group</span>
+<span class="text-[11px] font-bold">Min: 2</span>
+</div>
+<div class="bg-white border-2 border-on-surface px-2 py-1 rounded-lg flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">groups</span>
+<span class="text-[11px] font-bold">Max: 4</span>
+</div>
+</div>
+<div class="flex justify-end gap-2 mt-2 opacity-0 group-hover:opacity-100 transition-opacity">
+<button class="p-2 hover:bg-primary-container rounded-lg transition-colors border border-on-surface/10"><span class="material-symbols-outlined text-sm">edit</span></button>
+<button class="p-2 hover:bg-error-container rounded-lg transition-colors border border-on-surface/10"><span class="material-symbols-outlined text-sm text-error">delete</span></button>
+</div>
+</div>
+<!-- Table Card 2 -->
+<div class="p-4 rounded-xl border-2 border-on-surface bg-white flex flex-col gap-3 relative group">
+<div class="flex justify-between items-start">
+<div>
+<h4 class="text-label-bold font-label-bold text-on-surface">Table 2</h4>
+<p class="text-body-sm text-on-surface-variant">Main Hall • Row A</p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox">
+<div class="w-11 h-6 bg-surface-container rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-success-mint border-2 border-on-surface"></div>
+</label>
+</div>
+<div class="flex gap-4">
+<div class="bg-background-cream border-2 border-on-surface px-2 py-1 rounded-lg flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">group</span>
+<span class="text-[11px] font-bold">Min: 2</span>
+</div>
+<div class="bg-background-cream border-2 border-on-surface px-2 py-1 rounded-lg flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">groups</span>
+<span class="text-[11px] font-bold">Max: 4</span>
+</div>
+</div>
+</div>
+<!-- Table Card 3 (Communal) -->
+<div class="p-4 rounded-xl border-2 border-on-surface bg-surface-container flex flex-col gap-3 relative group">
+<div class="flex justify-between items-start">
+<div>
+<h4 class="text-label-bold font-label-bold text-on-surface text-tertiary">Communal Table 1</h4>
+<p class="text-body-sm text-on-surface-variant">Center Hall</p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox">
+<div class="w-11 h-6 bg-surface-container rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-success-mint border-2 border-on-surface"></div>
+</label>
+</div>
+<div class="flex gap-4">
+<div class="bg-white border-2 border-on-surface px-2 py-1 rounded-lg flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">group</span>
+<span class="text-[11px] font-bold">Min: 1</span>
+</div>
+<div class="bg-white border-2 border-on-surface px-2 py-1 rounded-lg flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">diversity_3</span>
+<span class="text-[11px] font-bold">Max: 12</span>
+</div>
+</div>
+</div>
+<!-- Table Card 4 (Patio) -->
+<div class="p-4 rounded-xl border-2 border-on-surface bg-success-mint/5 flex flex-col gap-3 relative group">
+<div class="flex justify-between items-start">
+<div>
+<h4 class="text-label-bold font-label-bold text-success-mint">Patio P1</h4>
+<p class="text-body-sm text-on-surface-variant">Outdoor Garden</p>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input class="sr-only peer" type="checkbox">
+<div class="w-11 h-6 bg-surface-container rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-success-mint border-2 border-on-surface"></div>
+</label>
+</div>
+<div class="flex gap-4">
+<div class="bg-white border-2 border-on-surface px-2 py-1 rounded-lg flex items-center gap-1 opacity-50">
+<span class="material-symbols-outlined text-xs">group</span>
+<span class="text-[11px] font-bold">Min: 1</span>
+</div>
+<div class="bg-white border-2 border-on-surface px-2 py-1 rounded-lg flex items-center gap-1 opacity-50">
+<span class="material-symbols-outlined text-xs">person</span>
+<span class="text-[11px] font-bold">Max: 2</span>
+</div>
+</div>
+<div class="absolute inset-0 bg-white/40 flex items-center justify-center backdrop-blur-[1px] rounded-lg">
+<span class="bg-error text-white font-label-bold px-3 py-1 rounded border-2 border-on-surface transform -rotate-12">INACTIVE</span>
+</div>
+</div>
+</div>
+<button class="w-full mt-6 radical-button bg-secondary-container text-on-secondary-container font-label-bold py-4 rounded-xl flex items-center justify-center gap-2 radical-shadow">
+<span class="material-symbols-outlined">save</span>
+                        SAVE CONFIGURATION
+                    </button>
+</div>
+</aside>
+</div>
+<!-- Floating Decorative Confetti -->
+<div class="fixed bottom-10 right-10 pointer-events-none opacity-20 hidden md:block">
+<span class="material-symbols-outlined text-[80px] text-primary-container">star</span>
+</div>
+<div class="fixed top-20 right-1/4 pointer-events-none opacity-10 hidden md:block">
+<span class="material-symbols-outlined text-[60px] text-secondary-container">downloading</span>
+</div>
+</main>
+<!-- Mobile Navigation Bar (Bottom) -->
+<nav class="fixed bottom-0 left-0 w-full bg-background-cream border-t-2 border-on-surface md:hidden flex justify-around items-center py-unit z-[60]">
+<button class="flex flex-col items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-[10px] font-bold">DASH</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-primary">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">layers</span>
+<span class="text-[10px] font-bold">FLOOR</span>
+</button>
+<button class="w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center -mt-8 border-4 border-on-surface shadow-xl">
+<span class="material-symbols-outlined">add</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined">calendar_month</span>
+<span class="text-[10px] font-bold">BOOK</span>
+</button>
+<button class="flex flex-col items-center gap-1 text-on-surface-variant">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-[10px] font-bold">CONF</span>
+</button>
+</nav>
+<script>
+        // Micro-interactions for table movement simulation
+        document.querySelectorAll('.floor-grid > div').forEach(table => {
+            table.addEventListener('mousedown', (e) => {
+                table.style.transform = 'scale(0.95)';
+                table.style.zIndex = '100';
+            });
+            document.addEventListener('mouseup', () => {
+                table.style.transform = 'scale(1)';
+                table.style.zIndex = '10';
+            });
+        });
+
+        // Toggle Switch Interactions
+        const toggles = document.querySelectorAll('input[type="checkbox"]');
+        toggles.forEach(toggle => {
+            toggle.addEventListener('change', function() {
+                const card = this.closest('.group');
+                if (this.checked) {
+                    card.querySelector('.absolute.inset-0.bg-white/40')?.remove();
+                } else {
+                    const inactiveOverlay = document.createElement('div');
+                    inactiveOverlay.className = 'absolute inset-0 bg-white/40 flex items-center justify-center backdrop-blur-[1px] rounded-lg';
+                    inactiveOverlay.innerHTML = '<span class="bg-error text-white font-label-bold px-3 py-1 rounded border-2 border-on-surface transform -rotate-12">INACTIVE</span>';
+                    card.appendChild(inactiveOverlay);
+                }
+            });
+        });
+    </script>
+
+
+
+
+</body></html>

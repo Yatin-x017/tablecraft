@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Edit Table Configuration - Crumb &amp; Confetti</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&amp;family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-background": "#231a11",
+                    "primary-fixed": "#ffdad2",
+                    "on-error": "#ffffff",
+                    "surface-tint": "#ae3115",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-bright": "#fff8f5",
+                    "on-secondary-fixed-variant": "#5a4300",
+                    "on-tertiary-fixed": "#400013",
+                    "on-secondary": "#ffffff",
+                    "surface-dim": "#e9d7c8",
+                    "success-mint": "#2EC4B6",
+                    "on-error-container": "#93000a",
+                    "secondary-container": "#fdc73a",
+                    "on-tertiary-container": "#6a0026",
+                    "on-primary": "#ffffff",
+                    "inverse-surface": "#392e25",
+                    "on-tertiary-fixed-variant": "#900036",
+                    "on-surface-variant": "#59413c",
+                    "primary-fixed-dim": "#ffb4a3",
+                    "on-primary-fixed-variant": "#8c1900",
+                    "surface": "#fff8f5",
+                    "background-cream": "#FFF8F0",
+                    "outline-variant": "#e1bfb8",
+                    "background": "#fff8f5",
+                    "secondary-fixed": "#ffdf9a",
+                    "on-primary-fixed": "#3d0600",
+                    "surface-variant": "#f2dfd1",
+                    "tertiary-container": "#ff6586",
+                    "tertiary-fixed": "#ffd9dd",
+                    "surface-white": "#FFFFFF",
+                    "secondary-fixed-dim": "#f4bf32",
+                    "surface-container": "#feeadc",
+                    "error-red": "#E63946",
+                    "inverse-primary": "#ffb4a3",
+                    "surface-container-high": "#f8e5d6",
+                    "on-tertiary": "#ffffff",
+                    "surface-container-highest": "#f2dfd1",
+                    "outline": "#8d716a",
+                    "on-primary-container": "#661000",
+                    "primary-container": "#ff6b4a",
+                    "primary": "#ae3115",
+                    "error": "#ba1a1a",
+                    "tertiary": "#bc054a",
+                    "on-secondary-fixed": "#251a00",
+                    "error-container": "#ffdad6",
+                    "secondary": "#775a00",
+                    "on-secondary-container": "#6f5400",
+                    "tertiary-fixed-dim": "#ffb2bd",
+                    "surface-container-low": "#fff1e8",
+                    "on-surface": "#231a11",
+                    "inverse-on-surface": "#ffeee1"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "container-max": "1280px",
+                    "gutter": "24px",
+                    "margin-mobile": "16px",
+                    "unit": "8px",
+                    "margin-desktop": "48px"
+            },
+            "fontFamily": {
+                    "headline-lg": ["Fredoka"],
+                    "display": ["Fredoka"],
+                    "headline-lg-mobile": ["Fredoka"],
+                    "body-sm": ["Plus Jakarta Sans"],
+                    "label-bold": ["Plus Jakarta Sans"],
+                    "body-lg": ["Plus Jakarta Sans"],
+                    "body-md": ["Plus Jakarta Sans"],
+                    "headline-md": ["Fredoka"]
+            },
+            "fontSize": {
+                    "headline-lg": ["40px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                    "display": ["56px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                    "body-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "label-bold": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "500"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .tactile-shadow {
+            box-shadow: 4px 4px 0px 0px #231a11;
+        }
+        .soft-coral-glow {
+            box-shadow: 0 10px 30px -10px rgba(255, 107, 74, 0.3);
+        }
+        .doodle-bg {
+            background-image: radial-gradient(#ff6b4a 1px, transparent 1px);
+            background-size: 24px 24px;
+            opacity: 0.05;
+        }
+        .modal-overlay {
+            background-color: rgba(35, 26, 17, 0.4);
+            backdrop-filter: blur(4px);
+        }
+    </style>
+</head>
+<body class="bg-background-cream text-on-surface font-body-md min-h-screen overflow-x-hidden">
+<!-- Header / Top Bar (Static for context) -->
+<header class="bg-background-cream border-b-2 border-on-surface flex justify-between items-center px-margin-mobile md:px-margin-desktop py-4 sticky top-0 z-40">
+<div class="flex items-center gap-4">
+<span class="text-headline-md font-headline-md font-extrabold tracking-tighter leading-none">CRUMB &amp; CONFETTI</span>
+</div>
+<div class="hidden md:flex gap-8">
+<a class="text-label-bold font-label-bold text-on-surface-variant hover:text-primary transition-colors" href="#">Floor Setup</a>
+<a class="text-label-bold font-label-bold text-on-surface-variant hover:text-primary transition-colors" href="#">Reservations</a>
+<a class="text-label-bold font-label-bold text-on-surface-variant hover:text-primary transition-colors" href="#">Staffing</a>
+</div>
+<button class="bg-primary-container text-on-primary-container px-6 py-2 rounded-xl font-label-bold text-label-bold border-2 border-on-surface tactile-shadow transition-transform active:scale-95">
+            BOOK TABLE
+        </button>
+</header>
+<!-- Floor Plan Setup Canvas (Blurred Background) -->
+<main class="p-margin-mobile md:p-margin-desktop relative">
+<div class="max-w-container-max mx-auto filter blur-sm transition-all duration-500">
+<div class="flex justify-between items-end mb-8">
+<div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface">Floor Layout</h1>
+<p class="text-body-lg text-on-surface-variant">Configure your dining areas and table capacities.</p>
+</div>
+</div>
+<!-- Fake Bento Floor Grid -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter">
+<div class="md:col-span-8 aspect-square bg-surface-white border-2 border-on-surface rounded-[32px] p-8 relative doodle-bg">
+<!-- Placeholder Table Circles -->
+<div class="absolute top-1/4 left-1/4 w-24 h-24 rounded-full border-2 border-on-surface bg-secondary-container flex items-center justify-center font-bold tactile-shadow">T1</div>
+<div class="absolute top-1/2 left-1/2 w-32 h-20 rounded-xl border-2 border-on-surface bg-primary-container flex items-center justify-center font-bold text-white tactile-shadow">T2</div>
+<div class="absolute bottom-1/4 right-1/4 w-24 h-24 rounded-full border-2 border-on-surface bg-surface-container-high flex items-center justify-center font-bold tactile-shadow">T3</div>
+</div>
+<div class="md:col-span-4 space-y-gutter">
+<div class="bg-surface-white border-2 border-on-surface rounded-[24px] p-6 tactile-shadow">
+<h3 class="font-headline-md text-headline-md mb-4">Quick Stats</h3>
+<div class="space-y-4">
+<div class="flex justify-between py-2 border-b border-surface-variant">
+<span class="font-label-bold">Total Tables</span>
+<span class="font-bold">24</span>
+</div>
+<div class="flex justify-between py-2 border-b border-surface-variant">
+<span class="font-label-bold">Max Capacity</span>
+<span class="font-bold">92</span>
+</div>
+</div>
+</div>
+<div class="bg-tertiary-container text-white border-2 border-on-surface rounded-[24px] p-6 tactile-shadow">
+<span class="material-symbols-outlined text-4xl mb-2">celebration</span>
+<h3 class="font-headline-md text-headline-md leading-tight">Ready for the brunch rush?</h3>
+<p class="text-body-sm mt-2 opacity-90">Ensure all high-capacity tables are marked active.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- MODAL OVERLAY -->
+<div class="fixed inset-0 z-50 flex items-center justify-center p-margin-mobile modal-overlay">
+<div class="bg-surface-white w-full max-w-lg border-2 border-on-surface rounded-[32px] overflow-hidden soft-coral-glow tactile-shadow animate-in fade-in zoom-in duration-300">
+<!-- Modal Header -->
+<div class="bg-primary-container p-6 border-b-2 border-on-surface flex justify-between items-center">
+<h2 class="font-headline-md text-headline-md text-on-primary">Edit Table Configuration</h2>
+<button class="w-10 h-10 rounded-full bg-on-primary-container text-white flex items-center justify-center hover:scale-110 transition-transform">
+<span class="material-symbols-outlined">close</span>
+</button>
+</div>
+<!-- Modal Body -->
+<div class="p-8 space-y-6">
+<!-- Table Number & Section Row -->
+<div class="grid grid-cols-2 gap-gutter">
+<div class="space-y-2">
+<label class="font-label-bold text-on-surface-variant block">Table Number</label>
+<input class="w-full bg-background-cream border-2 border-on-surface rounded-xl px-4 py-3 focus:ring-0 focus:border-primary-container font-bold text-lg" type="text" value="T-04"/>
+</div>
+<div class="space-y-2">
+<label class="font-label-bold text-on-surface-variant block">Section</label>
+<select class="w-full bg-background-cream border-2 border-on-surface rounded-xl px-4 py-3 focus:ring-0 focus:border-primary-container font-label-bold">
+<option>Main Hall</option>
+<option selected="">Patio</option>
+<option>Center Hall</option>
+</select>
+</div>
+</div>
+<!-- Capacity Row -->
+<div class="bg-surface-container-low p-6 rounded-2xl border-2 border-dashed border-outline-variant">
+<label class="font-label-bold text-on-surface-variant block mb-4">Guest Capacity</label>
+<div class="flex items-center gap-gutter">
+<div class="flex-1 space-y-1">
+<span class="text-[10px] uppercase font-bold tracking-widest text-outline">Minimum</span>
+<div class="flex items-center gap-2">
+<button class="w-8 h-8 rounded-full border-2 border-on-surface flex items-center justify-center active:scale-90">-</button>
+<input class="w-12 text-center bg-transparent border-none font-headline-md p-0 focus:ring-0" type="number" value="2"/>
+<button class="w-8 h-8 rounded-full border-2 border-on-surface flex items-center justify-center active:scale-90">+</button>
+</div>
+</div>
+<div class="h-12 w-[2px] bg-outline-variant"></div>
+<div class="flex-1 space-y-1">
+<span class="text-[10px] uppercase font-bold tracking-widest text-outline">Maximum</span>
+<div class="flex items-center gap-2">
+<button class="w-8 h-8 rounded-full border-2 border-on-surface flex items-center justify-center active:scale-90">-</button>
+<input class="w-12 text-center bg-transparent border-none font-headline-md p-0 focus:ring-0" type="number" value="4"/>
+<button class="w-8 h-8 rounded-full border-2 border-on-surface flex items-center justify-center active:scale-90">+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Active Toggle -->
+<div class="flex items-center justify-between p-4 bg-surface-bright rounded-xl border-2 border-on-surface">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-success-mint font-bold">check_circle</span>
+<div>
+<p class="font-label-bold leading-none">Table Status</p>
+<p class="text-body-sm text-on-surface-variant mt-1">Available for new bookings</p>
+</div>
+</div>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-14 h-8 bg-surface-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[4px] after:start-[4px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:bg-success-mint border-2 border-on-surface"></div>
+</label>
+</div>
+<!-- Image Preview Area -->
+<div class="relative group cursor-pointer overflow-hidden rounded-2xl border-2 border-on-surface aspect-[16/6]">
+<div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors z-10 flex items-center justify-center">
+<div class="bg-white/90 px-4 py-2 rounded-full flex items-center gap-2 shadow-lg">
+<span class="material-symbols-outlined text-sm">photo_camera</span>
+<span class="font-label-bold text-xs">UPDATE VIEW</span>
+</div>
+</div>
+<div class="w-full h-full bg-cover bg-center transition-transform duration-700 group-hover:scale-110" data-alt="A sunny cafe patio setting with modern wooden tables, terracotta flooring, and vibrant green plants in clay pots. Soft afternoon sunlight filters through a striped awning, creating a warm and welcoming atmosphere. The style is high-contrast with clean lines and bold textures, reflecting a modern boutique bakery and cafe brand identity." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCL5WLCl6d5pxs-M4LxubNgy5AAbRC1zvUrBt7M9D4b2t04a-dSeXwnI2L1F-kmklv0axKb99JRwG3gVKUWNFYeeLMyFsnaUf4wH98N5d_LS7bSnymrb3oRaX3bc1jIFdp-gSfyFPGwKl_YjtjJlZcRJtpmpV-KYxloJc2tIjgL1uNYUNKOqMrVjE-mlD6WmpOOa73h9v3HiPxUTSss4LGvcCPV2GxtToKL53w4P1sX4PXJeHg3waoq')"></div>
+</div>
+</div>
+<!-- Modal Footer -->
+<div class="p-6 bg-surface-container border-t-2 border-on-surface flex gap-4">
+<button class="flex-1 py-4 border-2 border-on-surface rounded-xl font-label-bold hover:bg-surface-variant transition-colors active:scale-95">
+                        CANCEL
+                    </button>
+<button class="flex-[2] py-4 bg-primary-container text-white border-2 border-on-surface rounded-xl font-label-bold tactile-shadow hover:scale-[1.02] transition-all active:scale-95">
+                        SAVE CONFIGURATION
+                    </button>
+</div>
+</div>
+</div>
+</main>
+<!-- Success Toast (Animated Signature) -->
+<div class="fixed bottom-margin-mobile left-1/2 -translate-x-1/2 z-[60] transform translate-y-32 transition-all duration-500" id="success-toast">
+<div class="bg-on-surface text-white px-8 py-4 rounded-full border-2 border-primary-container flex items-center gap-4 tactile-shadow">
+<span class="material-symbols-outlined text-success-mint">check_circle</span>
+<span class="font-label-bold">Table configuration updated!</span>
+</div>
+</div>
+<!-- Floating Decorative Doodles -->
+<div class="fixed bottom-12 right-12 opacity-20 pointer-events-none select-none">
+<span class="material-symbols-outlined text-[120px] text-primary rotate-12">bakery_dining</span>
+</div>
+<div class="fixed top-32 left-8 opacity-10 pointer-events-none select-none">
+<span class="material-symbols-outlined text-[80px] text-secondary-container -rotate-12">auto_awesome</span>
+</div>
+<script>
+        // Micro-interactions for the "Save" action
+        const saveBtn = document.querySelector('button.flex-\\[2\\]');
+        const toast = document.getElementById('success-toast');
+        const modal = document.querySelector('.modal-overlay');
+
+        saveBtn.addEventListener('click', () => {
+            // Simulate save
+            saveBtn.innerHTML = '<span class="material-symbols-outlined animate-spin">sync</span> SAVING...';
+            
+            setTimeout(() => {
+                modal.classList.add('opacity-0', 'scale-95');
+                modal.style.pointerEvents = 'none';
+                
+                // Show toast
+                toast.classList.remove('translate-y-32');
+                toast.classList.add('translate-y-0');
+
+                // Burst effect simulation would go here
+                console.log("Triggering Confetti Burst!");
+
+                setTimeout(() => {
+                    toast.classList.add('translate-y-32');
+                }, 3000);
+            }, 800);
+        });
+
+        // Close button functionality
+        document.querySelector('.material-symbols-outlined[data-icon="close"]').parentElement.addEventListener('click', () => {
+            modal.style.display = 'none';
+            document.querySelector('main > div').classList.remove('blur-sm');
+        });
+    </script>
+</body></html>
