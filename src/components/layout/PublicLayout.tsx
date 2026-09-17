@@ -433,12 +433,14 @@ export function Footer() {
   ].map((s) => ({ ...s, href: s.href || fallbackSocials.find((f) => f.label === s.label)?.href }));
 
   return (
-    <footer className="mt-16 border-t-2 border-on-surface pb-20 md:ml-[240px] md:pb-0">
+    <footer className="mt-16 border-t-2 border-on-surface pb-26 md:ml-[240px] md:pb-0">
       {/* Book CTA band — warm gradient */}
-      <div className="sunset-gradient px-margin-mobile py-12 md:px-margin-desktop">
-        <div className="mx-auto flex max-w-container-max flex-col items-center justify-between gap-6 text-center md:flex-row md:text-left">
+      <div className="sunset-gradient px-margin-mobile py-10 md:px-margin-desktop md:py-12">
+        <div className="mx-auto flex max-w-container-max flex-col items-center justify-between gap-5 text-center md:flex-row md:gap-6 md:text-left">
           <div>
-            <h2 className="font-headline-lg text-headline-lg text-on-surface">Got a sweet tooth calling?</h2>
+            <h2 className="font-headline-lg-mobile text-headline-lg-mobile md:font-headline-lg md:text-headline-lg text-on-surface">
+              Got a sweet tooth calling?
+            </h2>
             <p className="font-body-md text-on-surface/80">
               Reserve your table in under a minute — no phone tag required.
             </p>
@@ -474,7 +476,7 @@ export function Footer() {
 
       {/* Main footer grid — 4 balanced columns */}
       <div className="footer-wash text-background-cream">
-        <div className="mx-auto grid max-w-container-max grid-cols-1 gap-10 px-margin-mobile py-14 sm:grid-cols-2 md:px-margin-desktop lg:grid-cols-12 lg:gap-8">
+        <div className="mx-auto grid max-w-container-max grid-cols-1 gap-9 px-margin-mobile py-10 sm:grid-cols-2 sm:py-14 md:px-margin-desktop lg:grid-cols-12 lg:gap-8">
           {/* Brand + socials */}
           <div className="sm:col-span-2 lg:col-span-4">
             <div className="mb-4 flex items-center gap-2">
@@ -576,7 +578,7 @@ export function Footer() {
 
         {/* Legal bar */}
         <div className="border-t border-background-cream/15">
-          <div className="mx-auto flex max-w-container-max flex-wrap items-center justify-center gap-x-6 gap-y-2 px-margin-mobile py-6 text-center font-body-sm text-background-cream/60 sm:justify-between md:px-margin-desktop">
+          <div className="mx-auto flex max-w-container-max flex-wrap items-center justify-center gap-x-6 gap-y-2 px-margin-mobile py-5 text-center font-body-sm text-background-cream/60 sm:justify-between sm:py-6 md:px-margin-desktop">
             <p>© {new Date().getFullYear()} Crumb &amp; Confetti. All rights sprinkled with joy.</p>
             <nav className="flex items-center gap-5" aria-label="Legal">
               <Link to="/privacy" className="transition-colors hover:text-primary-container">
@@ -605,18 +607,25 @@ export function Footer() {
 
 /* ── Mobile sticky Book CTA ────────────────────────────────────────── */
 
+/** Mobile sticky Book CTA — slides up on mount, clears the iOS home bar. */
 function StickyMobileCta() {
   const { pathname } = useLocation();
+  const reduce = useReducedMotion();
   if (pathname.startsWith("/admin")) return null;
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-40 border-t-2 border-on-surface bg-surface-white/95 px-3 pt-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] backdrop-blur md:hidden">
+    <motion.div
+      initial={reduce ? false : { y: 88 }}
+      animate={{ y: 0 }}
+      transition={reduce ? { duration: 0 } : { type: "spring", stiffness: 320, damping: 30, delay: 0.15 }}
+      className="fixed bottom-0 left-0 right-0 z-40 border-t-2 border-on-surface bg-surface-white/95 px-3 pt-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] shadow-[0_-4px_16px_rgba(35,26,17,0.08)] backdrop-blur md:hidden"
+    >
       <Link
         to="/book"
-        className="flex items-center justify-center gap-2 rounded-[20px] border-2 border-on-surface bg-primary-container py-3.5 font-label-bold text-label-bold uppercase text-on-primary-container shadow-[3px_3px_0_#231a11] transition-all active:translate-y-0.5 active:shadow-[1px_1px_0_#231a11]"
+        className="flex items-center justify-center gap-2 rounded-[20px] border-2 border-on-surface bg-primary-container py-3.5 font-label-bold text-label-bold uppercase text-on-primary-container shadow-[3px_3px_0_#231a11] transition-all hover:bg-primary hover:text-on-primary active:translate-y-0.5 active:shadow-[1px_1px_0_#231a11]"
       >
         <Icon name="event_seat" size="sm" /> Book a Table
       </Link>
-    </div>
+    </motion.div>
   );
 }
 
