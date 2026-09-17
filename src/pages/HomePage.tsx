@@ -8,7 +8,7 @@ import { fetchMenu, fetchTestimonials } from "@/lib/api";
 import { IMG, type MenuItem, type Testimonial } from "@/lib/content";
 import { usePageMeta } from "@/lib/seo";
 
-/** Home hero — ported from home_crumb_confetti/code.html, with entrance motion. */
+/** Home hero — ported from design/home_crumb_confetti/code.html, with entrance motion. */
 function Hero() {
   const reduce = useReducedMotion();
   const fadeUp = (delay: number) => ({
